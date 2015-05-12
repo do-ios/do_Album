@@ -133,12 +133,12 @@
     
     albummultipleVc.selectSucessBlock = ^(NSMutableArray *selectImageArr)
     {
-        NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.PathPrivateTemp;
+        NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
         NSMutableArray *urlArr = [[NSMutableArray alloc]init];
         for (int i = 0; i < selectImageArr.count ; i ++) {
             ALAsset *asset = [selectImageArr objectAtIndex:i];
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
-            NSString *filePath = [NSString stringWithFormat:@"%@/%@",_fileFullName,fileName];
+            NSString *filePath = [NSString stringWithFormat:@"%@/tmp/do_Album/%@",_fileFullName,fileName];
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
             CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*(image.size.height/image.size.width));
             if (-1 == imageHeight && -1 == imageWidth) {//保持原始比例
@@ -148,11 +148,11 @@
             {
                 if(-1 == imageWidth)
                 {
-                    size = CGSizeMake(imageWidth, size.height);
+                    size = CGSizeMake(size.width, imageHeight);
                 }
                 if(-1 == imageHeight)
                 {
-                    size = CGSizeMake(size.width, imageHeight);
+                    size = CGSizeMake(imageWidth, size.height);
                 }
             }
             image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
@@ -160,7 +160,7 @@
             image = [UIImage imageWithData:imageData];
             [doIOHelper WriteAllBytes:filePath :imageData];
             
-            [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
+            [urlArr addObject:[NSString stringWithFormat:@"data://tmp/do_Album/%@",fileName]];
         }
         doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
         [_invokeResult SetResultArray:urlArr];

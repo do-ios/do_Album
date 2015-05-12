@@ -7,32 +7,32 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>6125C2AA-296F-45F9-9369-0B17F6E7E0E1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>DoAlbum_SM</string>
+	<string>doAlbum_SM</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>835BC2A6106477EE59827F186583477EF056CCF9</key>
-		<string>https://github.com/deviceone/do_Album.git</string>
+		<key>ED52FB92BAF440BE2B4C22B32EE88029AEF841E3</key>
+		<string>https://github.com/do-ios/do_Album.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>src/iOS/DoExt/DoAlbum_SM.xcodeproj</string>
+	<string>DoExt/doAlbum_SM.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>835BC2A6106477EE59827F186583477EF056CCF9</key>
-		<string>../../../../..</string>
+		<key>ED52FB92BAF440BE2B4C22B32EE88029AEF841E3</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/deviceone/do_Album.git</string>
+	<string>https://github.com/do-ios/do_Album.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>835BC2A6106477EE59827F186583477EF056CCF9</string>
+	<string>ED52FB92BAF440BE2B4C22B32EE88029AEF841E3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>835BC2A6106477EE59827F186583477EF056CCF9</string>
+			<string>ED52FB92BAF440BE2B4C22B32EE88029AEF841E3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>do_Album</string>
 		</dict>
