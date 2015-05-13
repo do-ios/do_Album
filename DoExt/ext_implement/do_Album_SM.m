@@ -158,6 +158,9 @@
             image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
             NSData *imageData = UIImageJPEGRepresentation(image, imageQuality / 100.0);
             image = [UIImage imageWithData:imageData];
+            NSString *path = [NSString stringWithFormat:@"%@/tmp/do_Album",_fileFullName];
+            if(![doIOHelper ExistDirectory:path])
+                [doIOHelper CreateDirectory:path];
             [doIOHelper WriteAllBytes:filePath :imageData];
             
             [urlArr addObject:[NSString stringWithFormat:@"data://tmp/do_Album/%@",fileName]];
