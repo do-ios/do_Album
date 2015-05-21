@@ -7,32 +7,15 @@
 //
 
 #import "do_Album_App.h"
+static do_Album_App *instance;
 
 @implementation do_Album_App
-@synthesize ThridPartyID;
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+@synthesize OpenURLScheme;
++(id) Instance
 {
-    return YES;
-}
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    
-}
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    
-}
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    
-}
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    
+    if(instance==nil)
+        instance = [[do_Album_App alloc]init];
+    return instance;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation fromThridParty:(NSString*)_id
 {

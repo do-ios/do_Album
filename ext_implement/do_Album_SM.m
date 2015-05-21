@@ -140,7 +140,10 @@
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
             NSString *filePath = [NSString stringWithFormat:@"%@/tmp/do_Album/%@",_fileFullName,fileName];
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
-            CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*(image.size.height/image.size.width));
+            CGSize size;
+//            CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*(image.size.height/image.size.width));
+            CGFloat hwRatio = image.size.height/image.size.width;
+            CGFloat whRatio = image.size.width/image.size.height;
             if (-1 == imageHeight && -1 == imageWidth) {//保持原始比例
                 size = CGSizeMake(imageWidth, imageHeight);
             }
@@ -148,14 +151,14 @@
             {
                 if(-1 == imageWidth)
                 {
-                    size = CGSizeMake(size.width, imageHeight);
+                    size = CGSizeMake(imageHeight*whRatio, imageHeight);
                 }
                 if(-1 == imageHeight)
                 {
-                    size = CGSizeMake(imageWidth, size.height);
+                    size = CGSizeMake(imageWidth, imageWidth*hwRatio);
                 }
             }
-            image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
+            image = [self imageWithImageSimple:image scaledToSize:size];
             NSData *imageData = UIImageJPEGRepresentation(image, imageQuality / 100.0);
             image = [UIImage imageWithData:imageData];
             NSString *path = [NSString stringWithFormat:@"%@/tmp/do_Album",_fileFullName];
@@ -172,6 +175,24 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [curVc presentViewController:naVc animated:YES completion:nil];
     });
+}
+
+
+//压缩
+-(UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
 }
 #pragma -mark -
 #pragma -mark UIImagePickerControllerDelegate代理方法
