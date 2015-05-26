@@ -140,7 +140,7 @@
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
             NSString *filePath = [NSString stringWithFormat:@"%@/tmp/do_Album/%@",_fileFullName,fileName];
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
-            CGSize size;
+            CGSize size = CGSizeMake(image.size.width, image.size.height);;
             CGFloat hwRatio = image.size.height/image.size.width;
             CGFloat whRatio = image.size.width/image.size.height;
             if (-1 == imageHeight && -1 == imageWidth) {//保持原始比例
