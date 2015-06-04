@@ -80,6 +80,12 @@
     else
     {
         NSString * imagePath = [doIOHelper GetLocalFileFullPath:_scritEngine.CurrentPage.CurrentApp :_path];
+        if(![doIOHelper ExistFile:imagePath]){
+            [_invokeResult SetResultBoolean:false];
+            [_scritEngine Callback:_callbackName :_invokeResult];//返回结果
+            return;
+        }
+
         if (imagePath ==nil || imagePath.length <= 0) {//失败
             [_invokeResult SetResultBoolean:false];
             [_scritEngine Callback:_callbackName :_invokeResult];//返回结果
