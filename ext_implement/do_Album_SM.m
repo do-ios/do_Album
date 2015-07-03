@@ -28,7 +28,12 @@
 
 @property(nonatomic,copy) NSString *myCallbackName;
 @property(nonatomic,weak) id<doIScriptEngine> myScritEngine;
-
+@property(nonatomic,strong) UIImagePickerController *imagePickerVC;
+@property(nonatomic,strong) UIPopoverController *popController;
+@property(nonatomic,assign) int imageNum;
+@property(nonatomic,assign) int imageWidth;
+@property(nonatomic,assign) int imageHeight;
+@property(nonatomic,assign) int imageQuality;
 @end
 
 @implementation do_Album_SM
@@ -69,9 +74,9 @@
     id<doIScriptEngine> _scritEngine = [parms objectAtIndex:1];
     //自己的代码实现
     NSString *_path = [doJsonHelper GetOneText:_dictParas :@"path" :@""];
-    NSInteger imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
-    NSInteger imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
-    NSInteger imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
+    _imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
+    _imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
+    _imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
     NSString *_callbackName = [parms objectAtIndex:2];
     doInvokeResult *_invokeResult = [[doInvokeResult alloc] init:self.UniqueKey];
     if (_path ==nil || _path.length <=0) {//失败
@@ -97,12 +102,12 @@
             [_scritEngine Callback:_callbackName :_invokeResult];//返回结果
             return;
         }
-        if (imageWidth >=0 && imageHeight >= 0) {//设置图片大小
-            imageTemp = [doUIModuleHelper imageWithImageSimple:imageTemp scaledToSize:CGSizeMake(imageWidth, imageHeight)];
+        if (_imageWidth >=0 && _imageHeight >= 0) {//设置图片大小
+            imageTemp = [doUIModuleHelper imageWithImageSimple:imageTemp scaledToSize:CGSizeMake(_imageWidth, _imageHeight)];
         }
-        if(imageQuality > 100)imageQuality  = 100;
-        if(imageQuality<0)imageQuality = 1;
-        NSData *imageData = UIImageJPEGRepresentation(imageTemp, imageQuality/100);
+        if(_imageQuality > 100)_imageQuality  = 100;
+        if(_imageQuality<0)_imageQuality = 1;
+        NSData *imageData = UIImageJPEGRepresentation(imageTemp, _imageQuality/100);
         imageTemp = [UIImage imageWithData:imageData];
         UIImageWriteToSavedPhotosAlbum(imageTemp, nil, nil, nil);//保存图片到相册
         [_invokeResult SetResultBoolean:true];
@@ -116,15 +121,41 @@
     self.myScritEngine = [parms objectAtIndex:1];
     self.myCallbackName = [parms objectAtIndex:2];
     //自己的代码实现
-    NSInteger imageNum = [doJsonHelper GetOneInteger:_dictParas :@"maxCount" :9];
-    NSInteger imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
-    NSInteger imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
-    NSInteger imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
-    
+    _imageNum = [doJsonHelper GetOneInteger:_dictParas :@"maxCount" :9];
+    _imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
+    _imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
+    _imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
     id<doIPage> curPage = [self.myScritEngine CurrentPage];
-    
+    NSLog(@"%d---%d---",_imageWidth,_imageHeight);
+    if (_imageWidth == 0&& _imageHeight ==0) {//对于不填的处理
+        _imageWidth = -1;
+        _imageHeight = -1;
+    }
     UIViewController *curVc = (UIViewController *)curPage.PageView;
-    
+    if (_imageNum == 1)
+    {
+        [self singleSelectImage:curVc];
+    }
+    else
+    {
+        [self multipleSelecteImage:curVc withNum:_imageNum withImageQuality:_imageQuality withImageWidth:_imageWidth withImageHeight:_imageHeight];
+    }
+}
+
+- (void)singleSelectImage:(UIViewController *)currentVc
+{
+    _imagePickerVC = [[UIImagePickerController alloc]init];
+    _imagePickerVC.delegate = self;
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        _imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [currentVc presentViewController:_imagePickerVC animated:YES completion:nil];
+        });
+    }
+}
+- (void)multipleSelecteImage:(UIViewController *)currentVc withNum:(int)imageNum withImageQuality:(int)imageQuality withImageWidth:(int)imageHeight withImageHeight:(int)imageWidth
+{
     YZAlbumMultipleViewController *albummultipleVc = [[YZAlbumMultipleViewController alloc]init];
     albummultipleVc.num = imageNum;
     UINavigationController *naVc = [[UINavigationController alloc]initWithRootViewController:albummultipleVc];
@@ -178,21 +209,76 @@
         [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
     };
     dispatch_async(dispatch_get_main_queue(), ^{
-        [curVc presentViewController:naVc animated:YES completion:nil];
+        [currentVc presentViewController:naVc animated:YES completion:nil];
     });
-}
 
+}
 
 #pragma -mark -
 #pragma -mark UIImagePickerControllerDelegate代理方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    UIImage *image = nil;
+    //当选择的类型是图片
+    if ([mediaType isEqualToString:@"public.image"]){
+        if ([info objectForKey:UIImagePickerControllerEditedImage]){
+            image = [info objectForKey:UIImagePickerControllerEditedImage];
+        } else {
+            image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        }
+        @try {
+            NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
+            NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
+            NSString *filePath = [NSString stringWithFormat:@"%@/tmp/do_Album/%@",_fileFullName,fileName];
+            CGSize size = CGSizeMake(_imageWidth, _imageHeight);;
+            CGFloat hwRatio = image.size.height/image.size.width;
+            CGFloat whRatio = image.size.width/image.size.height;
+            if (-1 == _imageHeight && -1 == _imageWidth) {//保持原始比例
+                size = CGSizeMake(image.size.width, image.size.height);
+            }
+            else
+            {
+                if(-1 == _imageWidth)
+                {
+                    size = CGSizeMake(_imageHeight*whRatio, _imageHeight);
+                }
+                if(-1 == _imageHeight)
+                {
+                    size = CGSizeMake(_imageWidth, _imageWidth*hwRatio);
+                }
+            }
+            image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
+            NSData *imageData = UIImageJPEGRepresentation(image, _imageQuality / 100.0);
+            image = [UIImage imageWithData:imageData];
+            NSString *path = [NSString stringWithFormat:@"%@/tmp/do_Album",_fileFullName];
+            if(![doIOHelper ExistDirectory:path])
+            {
+                [doIOHelper CreateDirectory:path];
+            }
+            [doIOHelper WriteAllBytes:filePath :imageData];
+            doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
+            [_invokeResult SetResultText:[NSString stringWithFormat:@"data://tmp/do_Album/%@",fileName]];
+            [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+        }
+        @catch (NSException *exception) {
+            @throw [NSException exceptionWithName:@"do_Album" reason:@"获取照片错误!" userInfo:nil];
+        }
+    }
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    
+    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+    [_invokeResult SetError:@"取消选择"];
+    [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+
 }
 
 @end
