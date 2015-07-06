@@ -144,7 +144,7 @@
         for (int i = 0; i < selectImageArr.count ; i ++) {
             ALAsset *asset = [selectImageArr objectAtIndex:i];
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
-            NSString *filePath = [NSString stringWithFormat:@"%@/tmp/do_Album/%@",_fileFullName,fileName];
+            NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
             CGSize size = CGSizeMake(imageWidth, imageHeight);;
             CGFloat hwRatio = image.size.height/image.size.width;
@@ -166,12 +166,12 @@
             image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
             NSData *imageData = UIImageJPEGRepresentation(image, imageQuality / 100.0);
             image = [UIImage imageWithData:imageData];
-            NSString *path = [NSString stringWithFormat:@"%@/tmp/do_Album",_fileFullName];
+            NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
             if(![doIOHelper ExistDirectory:path])
                 [doIOHelper CreateDirectory:path];
             [doIOHelper WriteAllBytes:filePath :imageData];
             
-            [urlArr addObject:[NSString stringWithFormat:@"data://tmp/do_Album/%@",fileName]];
+            [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
         }
         doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
         [_invokeResult SetResultArray:urlArr];
