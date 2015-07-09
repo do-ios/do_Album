@@ -18,16 +18,17 @@
 #import "doIPage.h"
 #import "doIScriptEngine.h"
 #import "doDefines.h"
-#import "YZAlbumMultipleViewController.h"
 #import "doIApp.h"
 #import "doIDataFS.h"
 #import "doIOHelper.h"
 #import "doJsonHelper.h"
+#import "doAGImagePickerController.h"
 
 @interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,copy) NSString *myCallbackName;
 @property(nonatomic,weak) id<doIScriptEngine> myScritEngine;
+@property(nonatomic,strong)doAGImagePickerController *doImagePickerContriller;
 
 @end
 
@@ -124,25 +125,34 @@
     id<doIPage> curPage = [self.myScritEngine CurrentPage];
     
     UIViewController *curVc = (UIViewController *)curPage.PageView;
-    
-    YZAlbumMultipleViewController *albummultipleVc = [[YZAlbumMultipleViewController alloc]init];
-    albummultipleVc.num = imageNum;
-    UINavigationController *naVc = [[UINavigationController alloc]initWithRootViewController:albummultipleVc];
-    albummultipleVc.cancelSelectBlock = ^(NSError *error)
-    {
-        doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
-        [_invokeResult SetError:@"错误"];
-        [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+    self.doImagePickerContriller = [doAGImagePickerController sharedInstance:self];
+    self.doImagePickerContriller.maximumNumberOfPhotosToBeSelected = imageNum;
+    __block UIViewController *blockVC = curVc;
+    __block do_Album_SM *blockSelf = self;
+    self.doImagePickerContriller.didFailBlock = ^(NSError *error) {
+        NSLog(@"Fail. Error: %@", error);
+        
+        if (error == nil) {
+            NSLog(@"User has cancelled.");
+            [blockVC dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            
+            // We need to wait for the view controller to appear first.
+            double delayInSeconds = 0.5;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [blockVC dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
     };
-    if(imageQuality > 100)imageQuality  = 100;
-    if(imageQuality<0)imageQuality = 1;
-    
-    albummultipleVc.selectSucessBlock = ^(NSMutableArray *selectImageArr)
-    {
-        NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
+    self.doImagePickerContriller.didFinishBlock = ^(NSArray *info) {
+        NSLog(@"Info: %@", info);
+        
+        [blockVC dismissViewControllerAnimated:YES completion:nil];
+        NSString *_fileFullName = [blockSelf.myScritEngine CurrentApp].DataFS.RootPath;
         NSMutableArray *urlArr = [[NSMutableArray alloc]init];
-        for (int i = 0; i < selectImageArr.count ; i ++) {
-            ALAsset *asset = [selectImageArr objectAtIndex:i];
+        for (int i = 0; i < info.count ; i ++) {
+            ALAsset *asset = [info objectAtIndex:i];
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
             NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
@@ -173,26 +183,13 @@
             
             [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
         }
-        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
+        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:blockSelf.UniqueKey];
         [_invokeResult SetResultArray:urlArr];
-        [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+        [blockSelf.myScritEngine Callback:blockSelf.myCallbackName :_invokeResult];
+        
     };
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [curVc presentViewController:naVc animated:YES completion:nil];
-    });
+    [curVc presentViewController:self.doImagePickerContriller animated:YES completion:^{
+            [self.doImagePickerContriller showFirstAssetsController];
+        }];
 }
-
-
-#pragma -mark -
-#pragma -mark UIImagePickerControllerDelegate代理方法
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    
-}
-
 @end
