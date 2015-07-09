@@ -127,8 +127,8 @@
     UIViewController *curVc = (UIViewController *)curPage.PageView;
     self.doImagePickerContriller = [doAGImagePickerController sharedInstance:self];
     self.doImagePickerContriller.maximumNumberOfPhotosToBeSelected = imageNum;
-    __block UIViewController *blockVC = curVc;
-    __block do_Album_SM *blockSelf = self;
+    __weak UIViewController *blockVC = curVc;
+    __weak do_Album_SM *blockSelf = self;
     self.doImagePickerContriller.didFailBlock = ^(NSError *error) {
         NSLog(@"Fail. Error: %@", error);
         
