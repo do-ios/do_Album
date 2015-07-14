@@ -487,6 +487,11 @@
 {
     // do noting
 }
+- (void)previewController:(doAGIPCPreviewController *)pVC didFinishSelected:(doAGIPCGridItem *)gridItem
+{
+    [self doneAction:nil];
+}
+
 
 #pragma mark - Notifications
 

@@ -25,6 +25,10 @@
 
 @property (nonatomic, strong) UIButton *bottomRightBtn;
 
+@property (nonatomic, strong) UIView *topBgView;
+
+@property (nonatomic, strong) UIButton *comfirmBtn;
+
 @end
 
 @implementation doAGIPCPreviewController
@@ -45,6 +49,7 @@
     // Do any additional setup after loading the view.
     
     [self setBottomView];
+    [self setTopBgView];
     [self setScrollView];
 }
 
@@ -67,6 +72,7 @@
     [super viewDidLayoutSubviews];
     
     [self setBottomView];
+    [self setTopBgView];
     [self setScrollView];
     
     [_preScrollView resetContentViews];
@@ -90,6 +96,39 @@
         [_delegate previewController:self didRotateFromOrientation:fromInterfaceOrientation];
     }
 }
+- (void)setTopBgView
+{
+    if (nil == _topBgView) {
+        /*TopBgView*/
+        UIView *bgView = [[UIView alloc] init];
+        bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"AGImagePickerController.bundle/AGIPC-Bar-bg"]];
+        bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        _topBgView = bgView;
+    }
+    _topBgView.frame = CGRectMake(0,self.view.frame.size.height - 44, self.view.frame.size.width, 44);
+    [self.view addSubview:_topBgView];
+    if (_comfirmBtn == nil) {
+        NSString *confirmTitle = @"完成";
+        if ([doAGIPCGridItem numberOfSelections] > 0) {
+            confirmTitle = [NSString stringWithFormat:@"(%lu)完成",(unsigned long)[doAGIPCGridItem numberOfSelections]];
+        }
+        UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        confirmBtn.backgroundColor = [UIColor clearColor];
+        [confirmBtn setTitle:confirmTitle forState:UIControlStateNormal];
+        [confirmBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [confirmBtn addTarget:self action:@selector(confirmBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _comfirmBtn = confirmBtn;
+    }
+    _comfirmBtn.frame = CGRectMake(self.view.frame.size.width - 100, 0, 100, 44);
+    [_topBgView addSubview:_comfirmBtn];
+}
+
+- (void)confirmBtnClick:(UIButton *)sender//变成小图
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate previewController:self didFinishSelected:nil];
+    }];
+}
 
 - (void)setBottomView
 {
@@ -100,7 +139,7 @@
         bgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         _bottomBgView = bgView;
     }
-    _bottomBgView.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
+    _bottomBgView.frame = CGRectMake(0, 0, self.view.frame.size.width, 66);
     [self.view addSubview:_bottomBgView];
     
     if (nil == _bottomLeftBtn) {
@@ -112,7 +151,7 @@
         [leftBtn addTarget:self action:@selector(didPressBottomLeftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _bottomLeftBtn = leftBtn;
     }
-    _bottomLeftBtn.frame = CGRectMake(0, 0, 120, 44);
+    _bottomLeftBtn.frame = CGRectMake(0, 22, 120, 44);
     [_bottomBgView addSubview:_bottomLeftBtn];
     
 //    if (nil == _bottomMiddleBtn) {
@@ -137,7 +176,7 @@
         [rightBtn addTarget:self action:@selector(didPressBottomRightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _bottomRightBtn = rightBtn;
     }
-    _bottomRightBtn.frame = CGRectMake(_bottomBgView.frame.size.width-70, 0, 90, 44);
+    _bottomRightBtn.frame = CGRectMake(_bottomBgView.frame.size.width-70, 22, 90, 44);
     [_bottomBgView addSubview:_bottomRightBtn];
 }
 
@@ -214,6 +253,9 @@
     } else {
         [self updateBottomRightButtonState:0];
     }
+    NSString *confirmTitle = [NSString stringWithFormat:@"(%lu)完成",(unsigned long)[doAGIPCGridItem numberOfSelections]];
+    [_comfirmBtn setTitle:confirmTitle forState:UIControlStateNormal];
+
 }
 
 #pragma mark - AGPreviewScrollViewDelegate

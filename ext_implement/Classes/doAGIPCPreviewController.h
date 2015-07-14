@@ -23,6 +23,8 @@
 - (void)previewController:(doAGIPCPreviewController *)pVC didSelectItem:(doAGIPCGridItem *)gridItem;
 
 - (void)previewController:(doAGIPCPreviewController *)pVC didDeselectItem:(doAGIPCGridItem *)gridItem;
+- (void)previewController:(doAGIPCPreviewController *)pVC didFinishSelected:(doAGIPCGridItem*)gridItem;
+
 
 @end
 
