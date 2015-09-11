@@ -155,8 +155,13 @@
             ALAsset *asset = [info objectAtIndex:i];
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
             NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
-            UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation]fullResolutionImage]];
-            CGSize size = CGSizeMake(imageWidth, imageHeight);;
+            
+            UIImage *image ;
+            if (!IOS_8) {
+                image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
+            }else
+                image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+            CGSize size = CGSizeMake(imageWidth, imageHeight);
             CGFloat hwRatio = image.size.height/image.size.width;
             CGFloat whRatio = image.size.width/image.size.height;
             if (-1 == imageHeight && -1 == imageWidth) {//保持原始比例
