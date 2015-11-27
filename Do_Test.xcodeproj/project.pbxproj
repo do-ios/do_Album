@@ -25,6 +25,8 @@
 		3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756521C0840E300F542BA /* doAlbumCropViewController.m */; };
 		3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756541C0840E300F542BA /* doAlbumResizeControl.m */; };
 		3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756561C0840E300F542BA /* UIButton+AGIPC.m */; };
+		3B37569B1C08432E00F542BA /* do_Album_App.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755551C07E7CF00F542BA /* do_Album_App.h */; };
+		3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755581C07E7CF00F542BA /* do_Album_SM.h */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
 		A44BC6761AEE005E001580AA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6751AEE005E001580AA /* ViewController.m */; };
@@ -71,6 +73,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				3B37569B1C08432E00F542BA /* do_Album_App.h in CopyFiles */,
+				3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,7 @@
 		3B3756541C0840E300F542BA /* doAlbumResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumResizeControl.m; sourceTree = "<group>"; };
 		3B3756551C0840E300F542BA /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
 		3B3756561C0840E300F542BA /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
+		3B37569D1C08437400F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -450,6 +455,7 @@
 				3B3755581C07E7CF00F542BA /* do_Album_SM.h */,
 				3B3755591C07E7CF00F542BA /* do_Album_SM.m */,
 				A4A1A01C1AF0F82B00D835A5 /* do_Test.json */,
+				3B37569D1C08437400F542BA /* do_Album.bundle */,
 			);
 			path = doExtLib;
 			sourceTree = "<group>";
