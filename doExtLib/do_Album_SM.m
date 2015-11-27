@@ -23,12 +23,17 @@
 #import "doIOHelper.h"
 #import "doJsonHelper.h"
 #import "doAGImagePickerController.h"
+#import "doAlbumCropViewController.h"
 
-@interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,doAlbumCropViewControllerDelegate>
 
 @property(nonatomic,copy) NSString *myCallbackName;
 @property(nonatomic,weak) id<doIScriptEngine> myScritEngine;
 @property(nonatomic,strong)doAGImagePickerController *doImagePickerContriller;
+@property (nonatomic, strong ) UIImage *tempImage;
+@property (nonatomic, assign) CGSize imageSize;
+@property (nonatomic, assign) NSInteger imageQuality;
 
 @end
 
@@ -121,6 +126,7 @@
     NSInteger imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
     NSInteger imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
     NSInteger imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
+    BOOL isCut = [doJsonHelper GetOneBoolean:_dictParas :@"iscut" :NO];
     
     id<doIPage> curPage = [self.myScritEngine CurrentPage];
     
@@ -161,6 +167,7 @@
                 image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
             }else
                 image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+            
             CGSize size = CGSizeMake(imageWidth, imageHeight);
             CGFloat hwRatio = image.size.height/image.size.width;
             CGFloat whRatio = image.size.width/image.size.height;
@@ -177,6 +184,13 @@
                 {
                     size = CGSizeMake(imageWidth, imageWidth*hwRatio);
                 }
+            }
+            if (imageNum == 1 && isCut) {
+                blockSelf.tempImage = image;
+                blockSelf.imageSize = size;
+                blockSelf.imageQuality = imageQuality;
+                [blockSelf openDoYZCropViewController];
+                return ;
             }
             image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
             NSData *imageData = UIImageJPEGRepresentation(image, imageQuality / 100.0);
@@ -196,5 +210,53 @@
     [curVc presentViewController:self.doImagePickerContriller animated:YES completion:^{
         [self.doImagePickerContriller showFirstAssetsController];
     }];
+}
+
+- (void) openDoYZCropViewController
+{
+    doAlbumCropViewController *vc = [[doAlbumCropViewController alloc]init];
+    vc.image = self.tempImage;
+    vc.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    id<doIPage> pageModel = _myScritEngine.CurrentPage;
+    UIViewController * currentVC = (UIViewController *)pageModel.PageView;
+    // 更改UI的操作，必须回到主线程
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [currentVC presentViewController:navigationController animated:YES completion:nil];
+    });
+}
+#pragma mark - 私有方法
+- (void)saveImageToLocal
+{
+    NSMutableArray *urlArr = [[NSMutableArray alloc]init];
+    NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
+    
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
+    NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
+    
+    self.tempImage = [doUIModuleHelper imageWithImageSimple:self.tempImage scaledToSize:self.imageSize];
+    NSData *imageData = UIImageJPEGRepresentation(self.tempImage, self.imageQuality / 100.0);
+    self.tempImage = [UIImage imageWithData:imageData];
+    NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
+    if(![doIOHelper ExistDirectory:path])
+        [doIOHelper CreateDirectory:path];
+    [doIOHelper WriteAllBytes:filePath :imageData];
+    
+    [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
+    doInvokeResult *_invokeResult = [[doInvokeResult alloc]init];
+    [_invokeResult SetResultArray:urlArr];
+    [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+}
+#pragma mark - doAlbumCropViewControllerDelegate方法
+
+-(void)cropViewController:(doAlbumCropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage
+{
+    self.tempImage = croppedImage;
+    [self saveImageToLocal];
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)cropViewControllerDidCancel:(doAlbumCropViewController *)controller
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 @end

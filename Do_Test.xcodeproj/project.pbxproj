@@ -9,18 +9,22 @@
 /* Begin PBXBuildFile section */
 		3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755561C07E7CF00F542BA /* do_Album_App.m */; };
 		3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755591C07E7CF00F542BA /* do_Album_SM.m */; };
-		3B3755771C07E81D00F542BA /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37555E1C07E81D00F542BA /* AGImagePickerController+Helper.m */; };
-		3B3755781C07E81D00F542BA /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755611C07E81D00F542BA /* ALAsset+AGIPC.m */; };
-		3B3755791C07E81D00F542BA /* doAGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755641C07E81D00F542BA /* doAGImagePickerController.m */; };
-		3B37557A1C07E81D00F542BA /* doAGImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755661C07E81D00F542BA /* doAGImagePreviewController.m */; };
-		3B37557B1C07E81D00F542BA /* doAGIPCAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755681C07E81D00F542BA /* doAGIPCAlbumsController.m */; };
-		3B37557C1C07E81D00F542BA /* doAGIPCAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37556A1C07E81D00F542BA /* doAGIPCAssetsController.m */; };
-		3B37557D1C07E81D00F542BA /* doAGIPCGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37556C1C07E81D00F542BA /* doAGIPCGridCell.m */; };
-		3B37557E1C07E81D00F542BA /* doAGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37556E1C07E81D00F542BA /* doAGIPCGridItem.m */; };
-		3B37557F1C07E81D00F542BA /* doAGIPCPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755701C07E81D00F542BA /* doAGIPCPreviewController.m */; };
-		3B3755801C07E81D00F542BA /* doAGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755721C07E81D00F542BA /* doAGIPCToolbarItem.m */; };
-		3B3755811C07E81D00F542BA /* doAGPreviewScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755741C07E81D00F542BA /* doAGPreviewScrollView.m */; };
-		3B3755821C07E81D00F542BA /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755761C07E81D00F542BA /* UIButton+AGIPC.m */; };
+		3B3756571C0840E300F542BA /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */; };
+		3B3756581C0840E300F542BA /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */; };
+		3B3756591C0840E300F542BA /* doAGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37563C1C0840E300F542BA /* doAGImagePickerController.m */; };
+		3B37565A1C0840E300F542BA /* doAGImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */; };
+		3B37565B1C0840E300F542BA /* doAGIPCAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */; };
+		3B37565C1C0840E300F542BA /* doAGIPCAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */; };
+		3B37565D1C0840E300F542BA /* doAGIPCGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756441C0840E300F542BA /* doAGIPCGridCell.m */; };
+		3B37565E1C0840E300F542BA /* doAGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756461C0840E300F542BA /* doAGIPCGridItem.m */; };
+		3B37565F1C0840E300F542BA /* doAGIPCPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */; };
+		3B3756601C0840E300F542BA /* doAGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */; };
+		3B3756611C0840E300F542BA /* doAGPreviewScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */; };
+		3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */; };
+		3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756501C0840E300F542BA /* doAlbumCropView.m */; };
+		3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756521C0840E300F542BA /* doAlbumCropViewController.m */; };
+		3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756541C0840E300F542BA /* doAlbumResizeControl.m */; };
+		3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756561C0840E300F542BA /* UIButton+AGIPC.m */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
 		A44BC6761AEE005E001580AA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6751AEE005E001580AA /* ViewController.m */; };
@@ -78,32 +82,40 @@
 		3B3755571C07E7CF00F542BA /* do_Album_ISM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_ISM.h; sourceTree = "<group>"; };
 		3B3755581C07E7CF00F542BA /* do_Album_SM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_SM.h; sourceTree = "<group>"; };
 		3B3755591C07E7CF00F542BA /* do_Album_SM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_SM.m; sourceTree = "<group>"; };
-		3B37555D1C07E81D00F542BA /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
-		3B37555E1C07E81D00F542BA /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
-		3B37555F1C07E81D00F542BA /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
-		3B3755601C07E81D00F542BA /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
-		3B3755611C07E81D00F542BA /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
-		3B3755621C07E81D00F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
-		3B3755631C07E81D00F542BA /* doAGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePickerController.h; sourceTree = "<group>"; };
-		3B3755641C07E81D00F542BA /* doAGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePickerController.m; sourceTree = "<group>"; };
-		3B3755651C07E81D00F542BA /* doAGImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePreviewController.h; sourceTree = "<group>"; };
-		3B3755661C07E81D00F542BA /* doAGImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePreviewController.m; sourceTree = "<group>"; };
-		3B3755671C07E81D00F542BA /* doAGIPCAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAlbumsController.h; sourceTree = "<group>"; };
-		3B3755681C07E81D00F542BA /* doAGIPCAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAlbumsController.m; sourceTree = "<group>"; };
-		3B3755691C07E81D00F542BA /* doAGIPCAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAssetsController.h; sourceTree = "<group>"; };
-		3B37556A1C07E81D00F542BA /* doAGIPCAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAssetsController.m; sourceTree = "<group>"; };
-		3B37556B1C07E81D00F542BA /* doAGIPCGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridCell.h; sourceTree = "<group>"; };
-		3B37556C1C07E81D00F542BA /* doAGIPCGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridCell.m; sourceTree = "<group>"; };
-		3B37556D1C07E81D00F542BA /* doAGIPCGridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridItem.h; sourceTree = "<group>"; };
-		3B37556E1C07E81D00F542BA /* doAGIPCGridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridItem.m; sourceTree = "<group>"; };
-		3B37556F1C07E81D00F542BA /* doAGIPCPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCPreviewController.h; sourceTree = "<group>"; };
-		3B3755701C07E81D00F542BA /* doAGIPCPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCPreviewController.m; sourceTree = "<group>"; };
-		3B3755711C07E81D00F542BA /* doAGIPCToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCToolbarItem.h; sourceTree = "<group>"; };
-		3B3755721C07E81D00F542BA /* doAGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCToolbarItem.m; sourceTree = "<group>"; };
-		3B3755731C07E81D00F542BA /* doAGPreviewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGPreviewScrollView.h; sourceTree = "<group>"; };
-		3B3755741C07E81D00F542BA /* doAGPreviewScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGPreviewScrollView.m; sourceTree = "<group>"; };
-		3B3755751C07E81D00F542BA /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
-		3B3755761C07E81D00F542BA /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
+		3B3756351C0840E300F542BA /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
+		3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
+		3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
+		3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
+		3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
+		3B37563A1C0840E300F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
+		3B37563B1C0840E300F542BA /* doAGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePickerController.h; sourceTree = "<group>"; };
+		3B37563C1C0840E300F542BA /* doAGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePickerController.m; sourceTree = "<group>"; };
+		3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePreviewController.h; sourceTree = "<group>"; };
+		3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePreviewController.m; sourceTree = "<group>"; };
+		3B37563F1C0840E300F542BA /* doAGIPCAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAlbumsController.h; sourceTree = "<group>"; };
+		3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAlbumsController.m; sourceTree = "<group>"; };
+		3B3756411C0840E300F542BA /* doAGIPCAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAssetsController.h; sourceTree = "<group>"; };
+		3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAssetsController.m; sourceTree = "<group>"; };
+		3B3756431C0840E300F542BA /* doAGIPCGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridCell.h; sourceTree = "<group>"; };
+		3B3756441C0840E300F542BA /* doAGIPCGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridCell.m; sourceTree = "<group>"; };
+		3B3756451C0840E300F542BA /* doAGIPCGridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridItem.h; sourceTree = "<group>"; };
+		3B3756461C0840E300F542BA /* doAGIPCGridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridItem.m; sourceTree = "<group>"; };
+		3B3756471C0840E300F542BA /* doAGIPCPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCPreviewController.h; sourceTree = "<group>"; };
+		3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCPreviewController.m; sourceTree = "<group>"; };
+		3B3756491C0840E300F542BA /* doAGIPCToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCToolbarItem.h; sourceTree = "<group>"; };
+		3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCToolbarItem.m; sourceTree = "<group>"; };
+		3B37564B1C0840E300F542BA /* doAGPreviewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGPreviewScrollView.h; sourceTree = "<group>"; };
+		3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGPreviewScrollView.m; sourceTree = "<group>"; };
+		3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropRectView.h; sourceTree = "<group>"; };
+		3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropRectView.m; sourceTree = "<group>"; };
+		3B37564F1C0840E300F542BA /* doAlbumCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropView.h; sourceTree = "<group>"; };
+		3B3756501C0840E300F542BA /* doAlbumCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropView.m; sourceTree = "<group>"; };
+		3B3756511C0840E300F542BA /* doAlbumCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropViewController.h; sourceTree = "<group>"; };
+		3B3756521C0840E300F542BA /* doAlbumCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropViewController.m; sourceTree = "<group>"; };
+		3B3756531C0840E300F542BA /* doAlbumResizeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumResizeControl.h; sourceTree = "<group>"; };
+		3B3756541C0840E300F542BA /* doAlbumResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumResizeControl.m; sourceTree = "<group>"; };
+		3B3756551C0840E300F542BA /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
+		3B3756561C0840E300F542BA /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -254,35 +266,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B37555C1C07E81D00F542BA /* Classes */ = {
+		3B3756341C0840E300F542BA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3B37555D1C07E81D00F542BA /* AGImagePickerController+Helper.h */,
-				3B37555E1C07E81D00F542BA /* AGImagePickerController+Helper.m */,
-				3B37555F1C07E81D00F542BA /* AGImagePickerControllerDefines.h */,
-				3B3755601C07E81D00F542BA /* ALAsset+AGIPC.h */,
-				3B3755611C07E81D00F542BA /* ALAsset+AGIPC.m */,
-				3B3755621C07E81D00F542BA /* do_Album.bundle */,
-				3B3755631C07E81D00F542BA /* doAGImagePickerController.h */,
-				3B3755641C07E81D00F542BA /* doAGImagePickerController.m */,
-				3B3755651C07E81D00F542BA /* doAGImagePreviewController.h */,
-				3B3755661C07E81D00F542BA /* doAGImagePreviewController.m */,
-				3B3755671C07E81D00F542BA /* doAGIPCAlbumsController.h */,
-				3B3755681C07E81D00F542BA /* doAGIPCAlbumsController.m */,
-				3B3755691C07E81D00F542BA /* doAGIPCAssetsController.h */,
-				3B37556A1C07E81D00F542BA /* doAGIPCAssetsController.m */,
-				3B37556B1C07E81D00F542BA /* doAGIPCGridCell.h */,
-				3B37556C1C07E81D00F542BA /* doAGIPCGridCell.m */,
-				3B37556D1C07E81D00F542BA /* doAGIPCGridItem.h */,
-				3B37556E1C07E81D00F542BA /* doAGIPCGridItem.m */,
-				3B37556F1C07E81D00F542BA /* doAGIPCPreviewController.h */,
-				3B3755701C07E81D00F542BA /* doAGIPCPreviewController.m */,
-				3B3755711C07E81D00F542BA /* doAGIPCToolbarItem.h */,
-				3B3755721C07E81D00F542BA /* doAGIPCToolbarItem.m */,
-				3B3755731C07E81D00F542BA /* doAGPreviewScrollView.h */,
-				3B3755741C07E81D00F542BA /* doAGPreviewScrollView.m */,
-				3B3755751C07E81D00F542BA /* UIButton+AGIPC.h */,
-				3B3755761C07E81D00F542BA /* UIButton+AGIPC.m */,
+				3B3756351C0840E300F542BA /* AGImagePickerController+Helper.h */,
+				3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */,
+				3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */,
+				3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */,
+				3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */,
+				3B37563A1C0840E300F542BA /* do_Album.bundle */,
+				3B37563B1C0840E300F542BA /* doAGImagePickerController.h */,
+				3B37563C1C0840E300F542BA /* doAGImagePickerController.m */,
+				3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */,
+				3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */,
+				3B37563F1C0840E300F542BA /* doAGIPCAlbumsController.h */,
+				3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */,
+				3B3756411C0840E300F542BA /* doAGIPCAssetsController.h */,
+				3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */,
+				3B3756431C0840E300F542BA /* doAGIPCGridCell.h */,
+				3B3756441C0840E300F542BA /* doAGIPCGridCell.m */,
+				3B3756451C0840E300F542BA /* doAGIPCGridItem.h */,
+				3B3756461C0840E300F542BA /* doAGIPCGridItem.m */,
+				3B3756471C0840E300F542BA /* doAGIPCPreviewController.h */,
+				3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */,
+				3B3756491C0840E300F542BA /* doAGIPCToolbarItem.h */,
+				3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */,
+				3B37564B1C0840E300F542BA /* doAGPreviewScrollView.h */,
+				3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */,
+				3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */,
+				3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */,
+				3B37564F1C0840E300F542BA /* doAlbumCropView.h */,
+				3B3756501C0840E300F542BA /* doAlbumCropView.m */,
+				3B3756511C0840E300F542BA /* doAlbumCropViewController.h */,
+				3B3756521C0840E300F542BA /* doAlbumCropViewController.m */,
+				3B3756531C0840E300F542BA /* doAlbumResizeControl.h */,
+				3B3756541C0840E300F542BA /* doAlbumResizeControl.m */,
+				3B3756551C0840E300F542BA /* UIButton+AGIPC.h */,
+				3B3756561C0840E300F542BA /* UIButton+AGIPC.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -423,7 +443,7 @@
 		A44BC7B31AEE19CD001580AA /* doExtLib */ = {
 			isa = PBXGroup;
 			children = (
-				3B37555C1C07E81D00F542BA /* Classes */,
+				3B3756341C0840E300F542BA /* Classes */,
 				3B3755551C07E7CF00F542BA /* do_Album_App.h */,
 				3B3755561C07E7CF00F542BA /* do_Album_App.m */,
 				3B3755571C07E7CF00F542BA /* do_Album_ISM.h */,
@@ -579,20 +599,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */,
 				3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */,
-				3B37557A1C07E81D00F542BA /* doAGImagePreviewController.m in Sources */,
-				3B37557C1C07E81D00F542BA /* doAGIPCAssetsController.m in Sources */,
+				3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */,
+				3B37565A1C0840E300F542BA /* doAGImagePreviewController.m in Sources */,
+				3B37565C1C0840E300F542BA /* doAGIPCAssetsController.m in Sources */,
 				3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */,
-				3B3755801C07E81D00F542BA /* doAGIPCToolbarItem.m in Sources */,
-				3B37557E1C07E81D00F542BA /* doAGIPCGridItem.m in Sources */,
-				3B3755791C07E81D00F542BA /* doAGImagePickerController.m in Sources */,
-				3B37557F1C07E81D00F542BA /* doAGIPCPreviewController.m in Sources */,
-				3B3755781C07E81D00F542BA /* ALAsset+AGIPC.m in Sources */,
-				3B37557B1C07E81D00F542BA /* doAGIPCAlbumsController.m in Sources */,
-				3B3755771C07E81D00F542BA /* AGImagePickerController+Helper.m in Sources */,
-				3B3755811C07E81D00F542BA /* doAGPreviewScrollView.m in Sources */,
-				3B3755821C07E81D00F542BA /* UIButton+AGIPC.m in Sources */,
-				3B37557D1C07E81D00F542BA /* doAGIPCGridCell.m in Sources */,
+				3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */,
+				3B3756601C0840E300F542BA /* doAGIPCToolbarItem.m in Sources */,
+				3B37565E1C0840E300F542BA /* doAGIPCGridItem.m in Sources */,
+				3B3756591C0840E300F542BA /* doAGImagePickerController.m in Sources */,
+				3B37565F1C0840E300F542BA /* doAGIPCPreviewController.m in Sources */,
+				3B3756581C0840E300F542BA /* ALAsset+AGIPC.m in Sources */,
+				3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */,
+				3B37565B1C0840E300F542BA /* doAGIPCAlbumsController.m in Sources */,
+				3B3756571C0840E300F542BA /* AGImagePickerController+Helper.m in Sources */,
+				3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */,
+				3B3756611C0840E300F542BA /* doAGPreviewScrollView.m in Sources */,
+				3B37565D1C0840E300F542BA /* doAGIPCGridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
