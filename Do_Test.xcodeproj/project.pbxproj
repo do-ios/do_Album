@@ -91,7 +91,6 @@
 		3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
 		3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
 		3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
-		3B37563A1C0840E300F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
 		3B37563B1C0840E300F542BA /* doAGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePickerController.h; sourceTree = "<group>"; };
 		3B37563C1C0840E300F542BA /* doAGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePickerController.m; sourceTree = "<group>"; };
 		3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePreviewController.h; sourceTree = "<group>"; };
@@ -279,7 +278,6 @@
 				3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */,
 				3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */,
 				3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */,
-				3B37563A1C0840E300F542BA /* do_Album.bundle */,
 				3B37563B1C0840E300F542BA /* doAGImagePickerController.h */,
 				3B37563C1C0840E300F542BA /* doAGImagePickerController.m */,
 				3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */,
