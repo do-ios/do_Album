@@ -64,6 +64,13 @@
         [UIView showOscillatoryAnimationWithLayer:_selectImageView.layer type:TZOscillatoryAnimationToBigger];
     }
 }
+- (void)layoutSubviews {
+    if (iOS7Later) [super layoutSubviews];
+}
+
+- (void)layoutSublayersOfLayer:(CALayer *)layer {
+    if (iOS7Later) [super layoutSublayersOfLayer:layer];
+}
 
 @end
 

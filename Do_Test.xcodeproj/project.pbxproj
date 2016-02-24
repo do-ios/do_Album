@@ -25,6 +25,7 @@
 		3B5D2CCC1C7BF56200BB8868 /* doYZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */; };
 		3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */; };
 		3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */; };
+		3BE411C81C7D5384001D504D /* doYZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE411C71C7D5384001D504D /* doYZAssetCell.xib */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
 		A44BC6761AEE005E001580AA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6751AEE005E001580AA /* ViewController.m */; };
@@ -114,7 +115,7 @@
 		3B5D2CC41C7BF56200BB8868 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAlbumCell.xib; sourceTree = "<group>"; };
-		3BE411B91C7D4174001D504D /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
+		3BE411C71C7D5384001D504D /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -285,8 +286,8 @@
 		3B5747091C7BF28700B28263 /* AlbumController */ = {
 			isa = PBXGroup;
 			children = (
+				3BE411C71C7D5384001D504D /* doYZAssetCell.xib */,
 				3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */,
-				3BE411B91C7D4174001D504D /* doYZAssetCell.xib */,
 				3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */,
 				3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */,
 				3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */,
@@ -573,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A1A01D1AF0F83700D835A5 /* do_Test.json in Resources */,
+				3BE411C81C7D5384001D504D /* doYZAssetCell.xib in Resources */,
 				A44BC67B1AEE005E001580AA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -137,6 +137,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         doYZImagePickerController *imagePickerVc = [[doYZImagePickerController alloc] initWithMaxImagesCount:_imageNum delegate:self];
+        imagePickerVc.allowPickingOriginalPhoto = NO;
+        imagePickerVc.allowPickingVideo = NO;
         [curVc presentViewController:imagePickerVc animated:YES completion:nil];
     });
 }

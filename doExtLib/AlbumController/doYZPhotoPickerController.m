@@ -34,7 +34,7 @@
 @end
 
 static CGSize AssetGridThumbnailSize;
-
+static NSString *cellID = @"doYZAssetCell";
 @implementation doYZPhotoPickerController
 
 - (NSMutableArray *)selectedPhotoArr {
@@ -79,8 +79,8 @@ static CGSize AssetGridThumbnailSize;
     if (!nibsRegistered) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"do_Album" ofType:@"bundle"];
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UINib *nib = [UINib nibWithNibName:@"doYZAssetCell" bundle:bundle];
-        [_collectionView registerNib:nib forCellWithReuseIdentifier:@"doYZAssetCell"];
+        UINib *nib = [UINib nibWithNibName:cellID bundle:bundle];
+        [_collectionView registerNib:nib forCellWithReuseIdentifier:cellID];
         nibsRegistered = YES;
     }
 
@@ -252,7 +252,7 @@ static CGSize AssetGridThumbnailSize;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    doYZAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"doYZAssetCell" forIndexPath:indexPath];
+    doYZAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     doYZAssetModel *model = _photoArr[indexPath.row];
     cell.model = model;
     
