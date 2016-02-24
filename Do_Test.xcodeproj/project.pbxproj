@@ -9,17 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755561C07E7CF00F542BA /* do_Album_App.m */; };
 		3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755591C07E7CF00F542BA /* do_Album_SM.m */; };
-		3B3756571C0840E300F542BA /* AGImagePickerController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */; };
-		3B3756581C0840E300F542BA /* ALAsset+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */; };
-		3B3756591C0840E300F542BA /* doAGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37563C1C0840E300F542BA /* doAGImagePickerController.m */; };
-		3B37565A1C0840E300F542BA /* doAGImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */; };
-		3B37565B1C0840E300F542BA /* doAGIPCAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */; };
-		3B37565C1C0840E300F542BA /* doAGIPCAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */; };
-		3B37565D1C0840E300F542BA /* doAGIPCGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756441C0840E300F542BA /* doAGIPCGridCell.m */; };
-		3B37565E1C0840E300F542BA /* doAGIPCGridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756461C0840E300F542BA /* doAGIPCGridItem.m */; };
-		3B37565F1C0840E300F542BA /* doAGIPCPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */; };
-		3B3756601C0840E300F542BA /* doAGIPCToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */; };
-		3B3756611C0840E300F542BA /* doAGPreviewScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */; };
 		3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */; };
 		3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756501C0840E300F542BA /* doAlbumCropView.m */; };
 		3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756521C0840E300F542BA /* doAlbumCropViewController.m */; };
@@ -27,6 +16,15 @@
 		3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756561C0840E300F542BA /* UIButton+AGIPC.m */; };
 		3B37569B1C08432E00F542BA /* do_Album_App.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755551C07E7CF00F542BA /* do_Album_App.h */; };
 		3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755581C07E7CF00F542BA /* do_Album_SM.h */; };
+		3B5D2CC61C7BF56200BB8868 /* doYZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */; };
+		3B5D2CC71C7BF56200BB8868 /* doYZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */; };
+		3B5D2CC81C7BF56200BB8868 /* doYZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */; };
+		3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */; };
+		3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */; };
+		3B5D2CCB1C7BF56200BB8868 /* doYZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */; };
+		3B5D2CCC1C7BF56200BB8868 /* doYZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */; };
+		3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */; };
+		3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
 		A44BC6761AEE005E001580AA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6751AEE005E001580AA /* ViewController.m */; };
@@ -86,29 +84,6 @@
 		3B3755571C07E7CF00F542BA /* do_Album_ISM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_ISM.h; sourceTree = "<group>"; };
 		3B3755581C07E7CF00F542BA /* do_Album_SM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_SM.h; sourceTree = "<group>"; };
 		3B3755591C07E7CF00F542BA /* do_Album_SM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_SM.m; sourceTree = "<group>"; };
-		3B3756351C0840E300F542BA /* AGImagePickerController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AGImagePickerController+Helper.h"; sourceTree = "<group>"; };
-		3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AGImagePickerController+Helper.m"; sourceTree = "<group>"; };
-		3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGImagePickerControllerDefines.h; sourceTree = "<group>"; };
-		3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+AGIPC.h"; sourceTree = "<group>"; };
-		3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAsset+AGIPC.m"; sourceTree = "<group>"; };
-		3B37563B1C0840E300F542BA /* doAGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePickerController.h; sourceTree = "<group>"; };
-		3B37563C1C0840E300F542BA /* doAGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePickerController.m; sourceTree = "<group>"; };
-		3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGImagePreviewController.h; sourceTree = "<group>"; };
-		3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGImagePreviewController.m; sourceTree = "<group>"; };
-		3B37563F1C0840E300F542BA /* doAGIPCAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAlbumsController.h; sourceTree = "<group>"; };
-		3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAlbumsController.m; sourceTree = "<group>"; };
-		3B3756411C0840E300F542BA /* doAGIPCAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCAssetsController.h; sourceTree = "<group>"; };
-		3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCAssetsController.m; sourceTree = "<group>"; };
-		3B3756431C0840E300F542BA /* doAGIPCGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridCell.h; sourceTree = "<group>"; };
-		3B3756441C0840E300F542BA /* doAGIPCGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridCell.m; sourceTree = "<group>"; };
-		3B3756451C0840E300F542BA /* doAGIPCGridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCGridItem.h; sourceTree = "<group>"; };
-		3B3756461C0840E300F542BA /* doAGIPCGridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCGridItem.m; sourceTree = "<group>"; };
-		3B3756471C0840E300F542BA /* doAGIPCPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCPreviewController.h; sourceTree = "<group>"; };
-		3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCPreviewController.m; sourceTree = "<group>"; };
-		3B3756491C0840E300F542BA /* doAGIPCToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGIPCToolbarItem.h; sourceTree = "<group>"; };
-		3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGIPCToolbarItem.m; sourceTree = "<group>"; };
-		3B37564B1C0840E300F542BA /* doAGPreviewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAGPreviewScrollView.h; sourceTree = "<group>"; };
-		3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAGPreviewScrollView.m; sourceTree = "<group>"; };
 		3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropRectView.h; sourceTree = "<group>"; };
 		3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropRectView.m; sourceTree = "<group>"; };
 		3B37564F1C0840E300F542BA /* doAlbumCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropView.h; sourceTree = "<group>"; };
@@ -120,6 +95,26 @@
 		3B3756551C0840E300F542BA /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
 		3B3756561C0840E300F542BA /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
 		3B37569D1C08437400F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
+		3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetCell.h; sourceTree = "<group>"; };
+		3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetCell.m; sourceTree = "<group>"; };
+		3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetModel.h; sourceTree = "<group>"; };
+		3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetModel.m; sourceTree = "<group>"; };
+		3B5D2CB81C7BF56200BB8868 /* doYZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImageManager.h; sourceTree = "<group>"; };
+		3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImageManager.m; sourceTree = "<group>"; };
+		3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImagePickerController.h; sourceTree = "<group>"; };
+		3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImagePickerController.m; sourceTree = "<group>"; };
+		3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPickerController.h; sourceTree = "<group>"; };
+		3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPickerController.m; sourceTree = "<group>"; };
+		3B5D2CBE1C7BF56200BB8868 /* doYZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		3B5D2CC01C7BF56200BB8868 /* doYZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewController.h; sourceTree = "<group>"; };
+		3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewController.m; sourceTree = "<group>"; };
+		3B5D2CC21C7BF56200BB8868 /* doYZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZVideoPlayerController.h; sourceTree = "<group>"; };
+		3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZVideoPlayerController.m; sourceTree = "<group>"; };
+		3B5D2CC41C7BF56200BB8868 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAlbumCell.xib; sourceTree = "<group>"; };
+		3BE411B91C7D4174001D504D /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -273,29 +268,6 @@
 		3B3756341C0840E300F542BA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3B3756351C0840E300F542BA /* AGImagePickerController+Helper.h */,
-				3B3756361C0840E300F542BA /* AGImagePickerController+Helper.m */,
-				3B3756371C0840E300F542BA /* AGImagePickerControllerDefines.h */,
-				3B3756381C0840E300F542BA /* ALAsset+AGIPC.h */,
-				3B3756391C0840E300F542BA /* ALAsset+AGIPC.m */,
-				3B37563B1C0840E300F542BA /* doAGImagePickerController.h */,
-				3B37563C1C0840E300F542BA /* doAGImagePickerController.m */,
-				3B37563D1C0840E300F542BA /* doAGImagePreviewController.h */,
-				3B37563E1C0840E300F542BA /* doAGImagePreviewController.m */,
-				3B37563F1C0840E300F542BA /* doAGIPCAlbumsController.h */,
-				3B3756401C0840E300F542BA /* doAGIPCAlbumsController.m */,
-				3B3756411C0840E300F542BA /* doAGIPCAssetsController.h */,
-				3B3756421C0840E300F542BA /* doAGIPCAssetsController.m */,
-				3B3756431C0840E300F542BA /* doAGIPCGridCell.h */,
-				3B3756441C0840E300F542BA /* doAGIPCGridCell.m */,
-				3B3756451C0840E300F542BA /* doAGIPCGridItem.h */,
-				3B3756461C0840E300F542BA /* doAGIPCGridItem.m */,
-				3B3756471C0840E300F542BA /* doAGIPCPreviewController.h */,
-				3B3756481C0840E300F542BA /* doAGIPCPreviewController.m */,
-				3B3756491C0840E300F542BA /* doAGIPCToolbarItem.h */,
-				3B37564A1C0840E300F542BA /* doAGIPCToolbarItem.m */,
-				3B37564B1C0840E300F542BA /* doAGPreviewScrollView.h */,
-				3B37564C1C0840E300F542BA /* doAGPreviewScrollView.m */,
 				3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */,
 				3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */,
 				3B37564F1C0840E300F542BA /* doAlbumCropView.h */,
@@ -308,6 +280,33 @@
 				3B3756561C0840E300F542BA /* UIButton+AGIPC.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		3B5747091C7BF28700B28263 /* AlbumController */ = {
+			isa = PBXGroup;
+			children = (
+				3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */,
+				3BE411B91C7D4174001D504D /* doYZAssetCell.xib */,
+				3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */,
+				3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */,
+				3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */,
+				3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */,
+				3B5D2CB81C7BF56200BB8868 /* doYZImageManager.h */,
+				3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */,
+				3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */,
+				3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */,
+				3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */,
+				3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */,
+				3B5D2CBE1C7BF56200BB8868 /* doYZPhotoPreviewCell.h */,
+				3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */,
+				3B5D2CC01C7BF56200BB8868 /* doYZPhotoPreviewController.h */,
+				3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */,
+				3B5D2CC21C7BF56200BB8868 /* doYZVideoPlayerController.h */,
+				3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */,
+				3B5D2CC41C7BF56200BB8868 /* UIView+Layout.h */,
+				3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */,
+			);
+			path = AlbumController;
 			sourceTree = "<group>";
 		};
 		A44BC6611AEE005E001580AA = {
@@ -446,6 +445,7 @@
 		A44BC7B31AEE19CD001580AA /* doExtLib */ = {
 			isa = PBXGroup;
 			children = (
+				3B5747091C7BF28700B28263 /* AlbumController */,
 				3B3756341C0840E300F542BA /* Classes */,
 				3B3755551C07E7CF00F542BA /* do_Album_App.h */,
 				3B3755561C07E7CF00F542BA /* do_Album_App.m */,
@@ -604,23 +604,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */,
+				3B5D2CC81C7BF56200BB8868 /* doYZImageManager.m in Sources */,
 				3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */,
+				3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */,
+				3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */,
 				3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */,
-				3B37565A1C0840E300F542BA /* doAGImagePreviewController.m in Sources */,
-				3B37565C1C0840E300F542BA /* doAGIPCAssetsController.m in Sources */,
+				3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */,
+				3B5D2CCC1C7BF56200BB8868 /* doYZPhotoPreviewController.m in Sources */,
 				3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */,
+				3B5D2CCB1C7BF56200BB8868 /* doYZPhotoPreviewCell.m in Sources */,
 				3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */,
-				3B3756601C0840E300F542BA /* doAGIPCToolbarItem.m in Sources */,
-				3B37565E1C0840E300F542BA /* doAGIPCGridItem.m in Sources */,
-				3B3756591C0840E300F542BA /* doAGImagePickerController.m in Sources */,
-				3B37565F1C0840E300F542BA /* doAGIPCPreviewController.m in Sources */,
-				3B3756581C0840E300F542BA /* ALAsset+AGIPC.m in Sources */,
+				3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */,
+				3B5D2CC61C7BF56200BB8868 /* doYZAssetCell.m in Sources */,
+				3B5D2CC71C7BF56200BB8868 /* doYZAssetModel.m in Sources */,
 				3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */,
-				3B37565B1C0840E300F542BA /* doAGIPCAlbumsController.m in Sources */,
-				3B3756571C0840E300F542BA /* AGImagePickerController+Helper.m in Sources */,
 				3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */,
-				3B3756611C0840E300F542BA /* doAGPreviewScrollView.m in Sources */,
-				3B37565D1C0840E300F542BA /* doAGIPCGridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="p0o-MB-cPK" customClass="doYZAlbumCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p0o-MB-cPK" id="DXx-l6-CUP">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n70-2x-tEG" userLabel="Poster Image View">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="5lq-VZ-1us"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0d-HU-jlO" userLabel="Title Label">
+                        <rect key="frame" x="80" y="0.0" width="190" height="70"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TableViewArrow" translatesAutoresizingMaskIntoConstraints="NO" id="5JD-fm-bg1">
+                        <rect key="frame" x="293" y="28" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="QJH-Q0-zcj"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="n70-2x-tEG" firstAttribute="leading" secondItem="DXx-l6-CUP" secondAttribute="leading" id="4ex-9k-E2P"/>
+                    <constraint firstAttribute="bottom" secondItem="5JD-fm-bg1" secondAttribute="bottom" constant="27" id="6s5-Qo-lK2"/>
+                    <constraint firstItem="i0d-HU-jlO" firstAttribute="leading" secondItem="n70-2x-tEG" secondAttribute="trailing" constant="10" id="AkA-Ii-MTK"/>
+                    <constraint firstAttribute="bottom" secondItem="i0d-HU-jlO" secondAttribute="bottom" id="LCL-zn-2rC"/>
+                    <constraint firstItem="n70-2x-tEG" firstAttribute="top" secondItem="DXx-l6-CUP" secondAttribute="top" id="Mg9-2w-W8j"/>
+                    <constraint firstAttribute="trailing" secondItem="i0d-HU-jlO" secondAttribute="trailing" constant="50" id="Rjh-IU-yfn"/>
+                    <constraint firstItem="i0d-HU-jlO" firstAttribute="top" secondItem="DXx-l6-CUP" secondAttribute="top" id="ZAk-38-QPT"/>
+                    <constraint firstItem="5JD-fm-bg1" firstAttribute="top" secondItem="DXx-l6-CUP" secondAttribute="top" constant="28" id="f26-Vo-vBy"/>
+                    <constraint firstAttribute="trailing" secondItem="5JD-fm-bg1" secondAttribute="trailing" constant="12" id="nZN-WI-Ycd"/>
+                    <constraint firstAttribute="bottom" secondItem="n70-2x-tEG" secondAttribute="bottom" id="z8t-s2-7sh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="posterImageView" destination="n70-2x-tEG" id="dNn-lj-TBG"/>
+                <outlet property="titleLable" destination="i0d-HU-jlO" id="zHW-Ey-K7M"/>
+            </connections>
+            <point key="canvasLocation" x="536" y="637"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="TableViewArrow" width="27" height="27"/>
+    </resources>
+</document>

@@ -22,18 +22,21 @@
 #import "doIDataFS.h"
 #import "doIOHelper.h"
 #import "doJsonHelper.h"
-#import "doAGImagePickerController.h"
+#import "doYZImagePickerController.h"
 #import "doAlbumCropViewController.h"
 
 
-@interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,doAlbumCropViewControllerDelegate>
+@interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,doAlbumCropViewControllerDelegate>
 
 @property(nonatomic,copy) NSString *myCallbackName;
 @property(nonatomic,weak) id<doIScriptEngine> myScritEngine;
-@property(nonatomic,strong)doAGImagePickerController *doImagePickerContriller;
 @property (nonatomic, strong ) UIImage *tempImage;
 @property (nonatomic, assign) CGSize imageSize;
 @property (nonatomic, assign) NSInteger imageQuality;
+@property (nonatomic, assign) NSInteger imageWidth;
+@property (nonatomic, assign) NSInteger imageHeight;
+@property (nonatomic, assign) NSInteger imageNum;
+@property (nonatomic, assign) BOOL isCut;
 
 @end
 
@@ -122,94 +125,20 @@
     self.myScritEngine = [parms objectAtIndex:1];
     self.myCallbackName = [parms objectAtIndex:2];
     //自己的代码实现
-    NSInteger imageNum = [doJsonHelper GetOneInteger:_dictParas :@"maxCount" :9];
-    NSInteger imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
-    NSInteger imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
-    NSInteger imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
-    BOOL isCut = [doJsonHelper GetOneBoolean:_dictParas :@"iscut" :NO];
-    
+    _imageNum = [doJsonHelper GetOneInteger:_dictParas :@"maxCount" :9];
+    _imageWidth = [doJsonHelper GetOneInteger:_dictParas :@"width" :-1];
+    _imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
+    _imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
+    _isCut = [doJsonHelper GetOneBoolean:_dictParas :@"iscut" :NO];
     id<doIPage> curPage = [self.myScritEngine CurrentPage];
     
     UIViewController *curVc = (UIViewController *)curPage.PageView;
-    self.doImagePickerContriller = [doAGImagePickerController sharedInstance:self];
-    self.doImagePickerContriller.maximumNumberOfPhotosToBeSelected = imageNum;
-    __weak UIViewController *blockVC = curVc;
-    __weak do_Album_SM *blockSelf = self;
-    self.doImagePickerContriller.didFailBlock = ^(NSError *error) {
-        NSLog(@"Fail. Error: %@", error);
-        
-        if (error == nil) {
-            NSLog(@"User has cancelled.");
-            [blockVC dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            
-            // We need to wait for the view controller to appear first.
-            double delayInSeconds = 0.5;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [blockVC dismissViewControllerAnimated:YES completion:nil];
-            });
-        }
-    };
-    self.doImagePickerContriller.didFinishBlock = ^(NSArray *info) {
-        NSLog(@"Info: %@", info);
-        
-        [blockVC dismissViewControllerAnimated:YES completion:nil];
-        NSString *_fileFullName = [blockSelf.myScritEngine CurrentApp].DataFS.RootPath;
-        NSMutableArray *urlArr = [[NSMutableArray alloc]init];
-        for (int i = 0; i < info.count ; i ++) {
-            ALAsset *asset = [info objectAtIndex:i];
-            NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
-            NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
-            
-            UIImage *image ;
-            if (!IOS_8) {
-                image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-            }else
-                image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
-            
-            CGSize size = CGSizeMake(imageWidth, imageHeight);
-            CGFloat hwRatio = image.size.height/image.size.width;
-            CGFloat whRatio = image.size.width/image.size.height;
-            if (-1 == imageHeight && -1 == imageWidth) {//保持原始比例
-                size = CGSizeMake(image.size.width, image.size.height);
-            }
-            else
-            {
-                if(-1 == imageWidth)
-                {
-                    size = CGSizeMake(imageHeight*whRatio, imageHeight);
-                }
-                if(-1 == imageHeight)
-                {
-                    size = CGSizeMake(imageWidth, imageWidth*hwRatio);
-                }
-            }
-            if (imageNum == 1 && isCut) {
-                blockSelf.tempImage = image;
-                blockSelf.imageSize = size;
-                blockSelf.imageQuality = imageQuality;
-                [blockSelf openDoYZCropViewController];
-                return ;
-            }
-            image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
-            NSData *imageData = UIImageJPEGRepresentation(image, imageQuality / 100.0);
-            image = [UIImage imageWithData:imageData];
-            NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
-            if(![doIOHelper ExistDirectory:path])
-                [doIOHelper CreateDirectory:path];
-            [doIOHelper WriteAllBytes:filePath :imageData];
-            
-            [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
-        }
-        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:blockSelf.UniqueKey];
-        [_invokeResult SetResultArray:urlArr];
-        [blockSelf.myScritEngine Callback:blockSelf.myCallbackName :_invokeResult];
-        
-    };
-    [curVc presentViewController:self.doImagePickerContriller animated:YES completion:^{
-        [self.doImagePickerContriller showFirstAssetsController];
-    }];
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        doYZImagePickerController *imagePickerVc = [[doYZImagePickerController alloc] initWithMaxImagesCount:_imageNum delegate:self];
+        [curVc presentViewController:imagePickerVc animated:YES completion:nil];
+    });
 }
 
 - (void) openDoYZCropViewController
@@ -221,8 +150,9 @@
     id<doIPage> pageModel = _myScritEngine.CurrentPage;
     UIViewController * currentVC = (UIViewController *)pageModel.PageView;
     // 更改UI的操作，必须回到主线程
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [currentVC presentViewController:navigationController animated:YES completion:nil];
+    dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+    dispatch_after(when, dispatch_get_main_queue(), ^{
+            [currentVC presentViewController:navigationController animated:YES completion:nil];
     });
 }
 #pragma mark - 私有方法
@@ -258,5 +188,61 @@
 - (void)cropViewControllerDidCancel:(doAlbumCropViewController *)controller
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark TZImagePickerControllerDelegate
+
+/// User click cancel button
+/// 用户点击了取消
+- (void)imagePickerControllerDidCancel:(doYZImagePickerController *)picker {
+    
+}
+
+/// User finish picking photo，if assets are not empty, user picking original photo.
+/// 用户选择好了图片，如果assets非空，则用户选择了原图。
+- (void)imagePickerController:(doYZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+    NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
+    NSMutableArray *urlArr = [[NSMutableArray alloc]init];
+    for (int i = 0; i < photos.count ; i ++) {
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
+        NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
+        UIImage *image = [photos objectAtIndex:i];
+        CGSize size = CGSizeMake(_imageWidth, _imageHeight);
+        CGFloat hwRatio = image.size.height/image.size.width;
+        CGFloat whRatio = image.size.width/image.size.height;
+        if (-1 == _imageHeight && -1 == _imageWidth) {//保持原始比例
+            size = CGSizeMake(image.size.width, image.size.height);
+        }
+        else
+        {
+            if(-1 == _imageWidth)
+            {
+                size = CGSizeMake(_imageHeight*whRatio, _imageHeight);
+            }
+            if(-1 == _imageHeight)
+            {
+                size = CGSizeMake(_imageWidth, _imageWidth*hwRatio);
+            }
+        }
+        if (_imageNum == 1 && _isCut) {
+            self.tempImage = image;
+            self.imageSize = size;
+            self.imageQuality = _imageQuality;
+            [self openDoYZCropViewController];
+            return ;
+        }
+        image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
+        NSData *imageData = UIImageJPEGRepresentation(image, _imageQuality / 100.0);
+        image = [UIImage imageWithData:imageData];
+        NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
+        if(![doIOHelper ExistDirectory:path])
+            [doIOHelper CreateDirectory:path];
+        [doIOHelper WriteAllBytes:filePath :imageData];
+
+        [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
+    }
+    doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
+    [_invokeResult SetResultArray:urlArr];
+    [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
 }
 @end
