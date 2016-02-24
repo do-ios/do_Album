@@ -18,7 +18,6 @@
 		3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755581C07E7CF00F542BA /* do_Album_SM.h */; };
 		3B5D2CC61C7BF56200BB8868 /* doYZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */; };
 		3B5D2CC71C7BF56200BB8868 /* doYZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */; };
-		3B5D2CC81C7BF56200BB8868 /* doYZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */; };
 		3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */; };
 		3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */; };
 		3B5D2CCB1C7BF56200BB8868 /* doYZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */; };
@@ -26,6 +25,7 @@
 		3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */; };
 		3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */; };
 		3BE411C81C7D5384001D504D /* doYZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE411C71C7D5384001D504D /* doYZAssetCell.xib */; };
+		3BE411CB1C7D6A5E001D504D /* doYZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
 		A44BC6761AEE005E001580AA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6751AEE005E001580AA /* ViewController.m */; };
@@ -100,8 +100,6 @@
 		3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetCell.m; sourceTree = "<group>"; };
 		3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetModel.h; sourceTree = "<group>"; };
 		3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetModel.m; sourceTree = "<group>"; };
-		3B5D2CB81C7BF56200BB8868 /* doYZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImageManager.h; sourceTree = "<group>"; };
-		3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImageManager.m; sourceTree = "<group>"; };
 		3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImagePickerController.h; sourceTree = "<group>"; };
 		3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImagePickerController.m; sourceTree = "<group>"; };
 		3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPickerController.h; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAlbumCell.xib; sourceTree = "<group>"; };
 		3BE411C71C7D5384001D504D /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
+		3BE411C91C7D6A5E001D504D /* doYZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImageManager.h; sourceTree = "<group>"; };
+		3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImageManager.m; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -286,14 +286,14 @@
 		3B5747091C7BF28700B28263 /* AlbumController */ = {
 			isa = PBXGroup;
 			children = (
+				3BE411C91C7D6A5E001D504D /* doYZImageManager.h */,
+				3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */,
 				3BE411C71C7D5384001D504D /* doYZAssetCell.xib */,
 				3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */,
 				3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */,
 				3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */,
 				3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */,
 				3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */,
-				3B5D2CB81C7BF56200BB8868 /* doYZImageManager.h */,
-				3B5D2CB91C7BF56200BB8868 /* doYZImageManager.m */,
 				3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */,
 				3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */,
 				3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */,
@@ -606,9 +606,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */,
-				3B5D2CC81C7BF56200BB8868 /* doYZImageManager.m in Sources */,
 				3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */,
 				3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */,
+				3BE411CB1C7D6A5E001D504D /* doYZImageManager.m in Sources */,
 				3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */,
 				3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */,
 				3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */,
