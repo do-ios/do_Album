@@ -315,7 +315,7 @@
         ALAssetRepresentation *assetRep = [alAsset defaultRepresentation];
         CGImageRef thumbnailImageRef = alAsset.aspectRatioThumbnail;
         UIImage *thumbnailImage = [UIImage imageWithCGImage:thumbnailImageRef scale:1.0 orientation:UIImageOrientationUp];
-        if (completion) completion(thumbnailImage,nil,YES);
+        if (completion) completion(thumbnailImage,nil,NO);
         
         if (photoWidth == [UIScreen mainScreen].bounds.size.width) {
             dispatch_async(dispatch_get_global_queue(0,0), ^{
