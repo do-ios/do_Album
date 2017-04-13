@@ -91,7 +91,7 @@
         for (PHAssetCollection *collection in smartAlbums) {
             PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:option];
             if (fetchResult.count < 1) continue;
-            if ([collection.localizedTitle containsString:@"Deleted"]) continue;
+            if ([collection.localizedTitle containsString:@"Deleted"] || [collection.localizedTitle containsString:@"最近删除"]) continue;
             if ([collection.localizedTitle isEqualToString:@"Camera Roll"]) {
                 [albumArr insertObject:[self modelWithResult:fetchResult name:collection.localizedTitle] atIndex:0];
             } else {
