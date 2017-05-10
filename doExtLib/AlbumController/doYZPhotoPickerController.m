@@ -31,6 +31,7 @@
 }
 @property (nonatomic, strong) NSMutableArray *selectedPhotoArr;
 @property CGRect previousPreheatRect;
+@property (nonatomic, strong) UIView *bottomToolBar;
 @end
 
 static CGSize AssetGridThumbnailSize;
@@ -55,6 +56,7 @@ static NSString *cellID = @"doYZAssetCell";
         [self configBottomToolBar];
     }];
     [self resetCachedAssets];
+    [self setupDeviceOrientatinChangeNofitify];
 }
 
 - (void)configCollectionView {
@@ -105,9 +107,9 @@ static NSString *cellID = @"doYZAssetCell";
     }}
 
 - (void)configBottomToolBar {
-    UIView *bottomToolBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.tz_height - 50, self.view.tz_width, 50)];
+    _bottomToolBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.tz_height - 50, self.view.tz_width, 50)];
     CGFloat rgb = 253 / 255.0;
-    bottomToolBar.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
+    _bottomToolBar.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
     
     _previewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _previewButton.frame = CGRectMake(10, 3, 44, 44);
@@ -172,12 +174,12 @@ static NSString *cellID = @"doYZAssetCell";
     divide.backgroundColor = [UIColor colorWithRed:rgb2 green:rgb2 blue:rgb2 alpha:1.0];
     divide.frame = CGRectMake(0, 0, self.view.tz_width, 1);
 
-    [bottomToolBar addSubview:divide];
-    [bottomToolBar addSubview:_previewButton];
-    [bottomToolBar addSubview:_okButton];
-    [bottomToolBar addSubview:_numberImageView];
-    [bottomToolBar addSubview:_numberLable];
-    [self.view addSubview:bottomToolBar];
+    [_bottomToolBar addSubview:divide];
+    [_bottomToolBar addSubview:_previewButton];
+    [_bottomToolBar addSubview:_okButton];
+    [_bottomToolBar addSubview:_numberImageView];
+    [_bottomToolBar addSubview:_numberLable];
+    [self.view addSubview:_bottomToolBar];
     [self.view addSubview:_originalPhotoButton];
     [_originalPhotoButton addSubview:_originalPhotoLable];
 }
@@ -454,6 +456,94 @@ static NSString *cellID = @"doYZAssetCell";
         [indexPaths addObject:indexPath];
     }
     return indexPaths;
+}
+
+#pragma mark - 设备旋转处理
+
+- (void)setupDeviceOrientatinChangeNofitify{
+    // 开始生成 设备旋转 通知
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    // 监听设备旋转通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleDeviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil
+     ];
+}
+
+- (void)resetView {
+    [_collectionView removeFromSuperview];
+    _collectionView = nil;
+    [self configCollectionView];
+    
+    [_previewButton removeFromSuperview];
+    _previewButton = nil;
+    [_okButton removeFromSuperview];
+    _okButton = nil;
+    [_numberImageView removeFromSuperview];
+    _numberImageView = nil;
+    [_bottomToolBar removeFromSuperview];
+    _bottomToolBar = nil;
+    [_originalPhotoLable removeFromSuperview];
+    _originalPhotoLable = nil;
+    [_originalPhotoButton removeFromSuperview];
+    _originalPhotoButton = nil;
+    
+    [self configBottomToolBar];
+}
+
+- (void)handleDeviceOrientationDidChange:(UIInterfaceOrientation)interfaceOrientation
+{
+    // 当前设备 实例
+    UIDevice *device = [UIDevice currentDevice] ;
+    // 取得当前Device的方向，Device的方向类型为Integer ，必须调用beginGeneratingDeviceOrientationNotifications方法后，此orientation属性才有效，否则一直是0。orientation用于判断设备的朝向，与应用UI方向无关
+    switch (device.orientation) {
+        case UIDeviceOrientationFaceUp:
+            NSLog(@"屏幕朝上平躺");
+            break;
+            
+        case UIDeviceOrientationFaceDown:
+            NSLog(@"屏幕朝下平躺");
+            break;
+            //系統無法判斷目前Device的方向，有可能是斜置
+        case UIDeviceOrientationUnknown:
+            NSLog(@"未知方向");
+            break;
+            
+        case UIDeviceOrientationLandscapeLeft:
+            NSLog(@"屏幕向左横置");
+            [self resetView];
+            break;
+            
+        case UIDeviceOrientationLandscapeRight:
+            NSLog(@"屏幕向右橫置");
+            [self resetView];
+            break;
+            
+        case UIDeviceOrientationPortrait:
+            NSLog(@"屏幕直立");
+            [self resetView];
+            break;
+            
+        case UIDeviceOrientationPortraitUpsideDown:
+            NSLog(@"屏幕直立，上下顛倒");
+            break;
+            
+        default:
+            NSLog(@"无法辨识");
+            break;
+    }
+    
+}
+
+- (void)dealloc {
+    // 销毁 设备旋转 通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIDeviceOrientationDidChangeNotification
+                                                  object:nil
+     ];
+    // 结束 设备旋转通知
+    [[UIDevice currentDevice]endGeneratingDeviceOrientationNotifications];
 }
 
 @end
