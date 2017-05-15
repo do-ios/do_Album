@@ -475,6 +475,9 @@ static NSString *cellID = @"doYZAssetCell";
     [_collectionView removeFromSuperview];
     _collectionView = nil;
     [self configCollectionView];
+    // 滚到底部
+    CGPoint bottomOffset = CGPointMake(0, _collectionView.contentSize.height - _collectionView.bounds.size.height);
+    [_collectionView setContentOffset:bottomOffset animated:NO];
     
     [_previewButton removeFromSuperview];
     _previewButton = nil;

@@ -276,6 +276,12 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
      ];
 }
 
+- (void)resetView{
+    [_tableView removeFromSuperview];
+    _tableView = nil;
+    [self configTableView];
+}
+
 - (void)handleDeviceOrientationDidChange:(UIInterfaceOrientation)interfaceOrientation
 {
     // 当前设备 实例
@@ -296,24 +302,17 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
             
         case UIDeviceOrientationLandscapeLeft:
             NSLog(@"屏幕向左横置");
-            [_tableView removeFromSuperview];
-            _tableView = nil;
-            [self configTableView];
-            
+            [self resetView];
             break;
             
         case UIDeviceOrientationLandscapeRight:
             NSLog(@"屏幕向右橫置");
-            [_tableView removeFromSuperview];
-            _tableView = nil;
-            [self configTableView];
+            [self resetView];
             break;
             
         case UIDeviceOrientationPortrait:
             NSLog(@"屏幕直立");
-            [_tableView removeFromSuperview];
-            _tableView = nil;
-            [self configTableView];
+            [self resetView];
             break;
             
         case UIDeviceOrientationPortraitUpsideDown:
