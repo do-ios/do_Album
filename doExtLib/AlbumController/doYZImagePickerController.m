@@ -157,7 +157,8 @@
         [_HUDIndicatorView stopAnimating];
         [_progressHUD removeFromSuperview];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // 去掉动画效果: 带动画的dismiss之后如果紧跟popToViewController,popToViewController会失效.
+    [self dismissViewControllerAnimated:false completion:nil];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
