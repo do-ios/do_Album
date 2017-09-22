@@ -13,6 +13,7 @@
 @interface doAlbumCropViewController : UIViewController
 @property (nonatomic,weak) id<doAlbumCropViewControllerDelegate> delegate;
 @property (nonatomic,assign) UIImage *image;
+@property (nonatomic, strong) id asset;
 
 @end
 

@@ -32,6 +32,10 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = @"视频预览";
     [self configMoviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserverForName:doAblumFinishExprotVideoToLocalNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        NSLog(@"退出");
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    }];
 }
 
 - (void)configMoviePlayer {
@@ -68,8 +72,8 @@
 - (void)configPlayButton {
     _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _playButton.frame = CGRectMake(0, 64, self.view.tz_width, self.view.tz_height - 64 - 44);
-    [_playButton setImage:[UIImage imageNamed:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
-    [_playButton setImage:[UIImage imageNamed:@"MMVideoPreviewPlayHL"] forState:UIControlStateHighlighted];
+    [_playButton setImage:[self getImageWithImageName:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
+    [_playButton setImage:[self getImageWithImageName:@"MMVideoPreviewPlayHL"] forState:UIControlStateHighlighted];
     [_playButton addTarget:self action:@selector(playButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_playButton];
 }
@@ -90,6 +94,20 @@
     
     [_toolBar addSubview:_okButton];
     [self.view addSubview:_toolBar];
+}
+
+- (UIImage*)getImageWithImageName:(NSString *)name{
+    NSURL *bundleUrl = [[NSBundle mainBundle] URLForResource:@"do_Album" withExtension:@"bundle"];
+    NSString *bundlePath = [[NSBundle bundleWithURL:bundleUrl] bundlePath];
+    NSString *imgPath = [bundlePath stringByAppendingPathComponent:name];
+    NSString *pathExtension = [imgPath pathExtension];
+    //没有后缀加上PNG后缀
+    if (!pathExtension || pathExtension.length == 0) {
+        pathExtension = @"png";
+    }
+    NSString *imageName = nil;
+    imageName = [NSString stringWithFormat:@"%@.%@", [[imgPath lastPathComponent] stringByDeletingPathExtension], pathExtension];
+    return [UIImage imageWithContentsOfFile:[[imgPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:imageName]];
 }
 
 #pragma mark - Click Event
@@ -117,7 +135,6 @@
     if (imagePickerVc.didFinishPickingVideoHandle) {
         imagePickerVc.didFinishPickingVideoHandle(_cover,_model.asset);
     }
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Notification Method
@@ -126,7 +143,7 @@
     [_player pause];
     _toolBar.hidden = NO;
     [self.navigationController setNavigationBarHidden:NO];
-    [_playButton setImage:[UIImage imageNamed:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
+    [_playButton setImage:[self getImageWithImageName:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
     if (iOS7Later) [UIApplication sharedApplication].statusBarHidden = NO;
 }
 

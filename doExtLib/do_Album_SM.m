@@ -24,8 +24,11 @@
 #import "doJsonHelper.h"
 #import "doYZImagePickerController.h"
 #import "doAlbumCropViewController.h"
-
-
+#import <Photos/Photos.h>
+#import <AssetsLibrary/ALAsset.h>
+#import "doServiceContainer.h"
+#import "doLogEngine.h"
+#import "doYZVideoPlayerController.h"
 @interface do_Album_SM()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,doAlbumCropViewControllerDelegate>
 
 @property(nonatomic,copy) NSString *myCallbackName;
@@ -37,10 +40,93 @@
 @property (nonatomic, assign) NSInteger imageHeight;
 @property (nonatomic, assign) NSInteger imageNum;
 @property (nonatomic, assign) BOOL isCut;
-
+@property (nonatomic, strong) NSTimer *timerToFireSelectResult;
+@property (nonatomic, assign) int countForFireSelectResult;
+@property (nonatomic, strong) NSMutableArray<NSString *> *selectedPhotoPathsArray;
+@property (nonatomic, strong) UIView *coverView;
+@property (nonatomic, strong) UIView *interceptTouchView;
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
+@property (nonatomic, strong) UILabel *exportLoadingLabel;
 @end
 
 @implementation do_Album_SM
+- (void)OnInit {
+    [super OnInit];
+    _countForFireSelectResult = 0;
+    _timerToFireSelectResult = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(fireSelectResult) userInfo:nil repeats:YES];
+    [_timerToFireSelectResult setFireDate:[NSDate distantFuture]];
+    _selectedPhotoPathsArray = [NSMutableArray array];
+}
+- (void)Dispose {
+    [super Dispose];
+    _timerToFireSelectResult = nil;
+    _countForFireSelectResult = 0;
+    _selectedPhotoPathsArray = nil;
+}
+
+- (void)fireSelectResult {
+    if (_countForFireSelectResult == _selectedPhotoPathsArray.count) {
+        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
+        [_invokeResult SetResultArray:_selectedPhotoPathsArray];
+        [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+        [_timerToFireSelectResult setFireDate:[NSDate distantFuture]];
+        _countForFireSelectResult = 0;
+    }
+}
+
+#pragma mark - lazy
+
+- (UIActivityIndicatorView *)indicatorView {
+    if (_indicatorView == nil) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _indicatorView.frame = CGRectMake(0, 40, 150, 50);
+        return _indicatorView;
+    }
+    return _indicatorView;
+}
+
+- (UILabel *)exportLoadingLabel {
+    if (_exportLoadingLabel == nil) {
+        _exportLoadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 150, 50)];
+        _exportLoadingLabel.textColor = [UIColor whiteColor];
+        _exportLoadingLabel.textAlignment = NSTextAlignmentCenter;
+        _exportLoadingLabel.font = [UIFont systemFontOfSize:13];
+        _exportLoadingLabel.text = @"系统视频保存本地中...";
+        return _exportLoadingLabel;
+    }
+    return _exportLoadingLabel;
+}
+
+
+- (UIView *)interceptTouchView {
+    if (_interceptTouchView == nil) {
+        _interceptTouchView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        
+        [_interceptTouchView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doNothing)]];
+        return _interceptTouchView;
+    }
+    return  _interceptTouchView;
+}
+
+- (UIView *)coverView {
+    if (_coverView == nil) {
+        _coverView = [[UIView alloc] init];
+        _coverView.backgroundColor = [UIColor blackColor];
+        _coverView.layer.cornerRadius = 30.0f;
+        _coverView.layer.masksToBounds = true;
+        float x = 0.0f;
+        float y = 0.0f;
+        float W = 150.0f;
+        float H = 150.0f;
+        x = ([UIScreen mainScreen].bounds.size.width - W) / 2;
+        y = ([UIScreen mainScreen].bounds.size.height - H) / 2;
+        _coverView.frame = CGRectMake(x, y, W, H);
+        
+        return _coverView;
+    }
+    return _coverView;
+}
+
 #pragma mark -
 #pragma mark - 同步异步方法的实现
 /*
@@ -138,27 +224,35 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         doYZImagePickerController *imagePickerVc = [[doYZImagePickerController alloc] initWithMaxImagesCount:_imageNum delegate:self];
         imagePickerVc.allowPickingOriginalPhoto = NO;
-        imagePickerVc.allowPickingVideo = NO;
+        if ([UIDevice currentDevice].systemVersion.floatValue < 8.0) { // iOS8 一下的不予支持视频选择
+            imagePickerVc.allowPickingVideo = NO;
+        }else {
+            imagePickerVc.allowPickingVideo = YES;
+        }
         [curVc presentViewController:imagePickerVc animated:YES completion:nil];
     });
 }
 
-- (void) openDoYZCropViewController
+- (void) openDoYZCropViewController:(id)asset
 {
     doAlbumCropViewController *vc = [[doAlbumCropViewController alloc]init];
+    vc.asset = asset;
     vc.image = self.tempImage;
     vc.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     id<doIPage> pageModel = _myScritEngine.CurrentPage;
     UIViewController * currentVC = (UIViewController *)pageModel.PageView;
     // 更改UI的操作，必须回到主线程
-    dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
-    dispatch_after(when, dispatch_get_main_queue(), ^{
-            [currentVC presentViewController:navigationController animated:YES completion:nil];
+//    dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+//    dispatch_after(when, dispatch_get_main_queue(), ^{
+//            [currentVC presentViewController:navigationController animated:YES completion:nil];
+//    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [currentVC presentViewController:navigationController animated:YES completion:nil];
     });
 }
 #pragma mark - 私有方法
-- (void)saveImageToLocal
+- (void)saveImageToLocalWithAsset:(doAlbumCropViewController*)controller
 {
     NSMutableArray *urlArr = [[NSMutableArray alloc]init];
     NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
@@ -167,25 +261,101 @@
     NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
     
     self.tempImage = [doUIModuleHelper imageWithImageSimple:self.tempImage scaledToSize:self.imageSize];
+    CGSize imageSize = self.imageSize;
     NSData *imageData = UIImageJPEGRepresentation(self.tempImage, self.imageQuality / 100.0);
     self.tempImage = [UIImage imageWithData:imageData];
     NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
-    if(![doIOHelper ExistDirectory:path])
-        [doIOHelper CreateDirectory:path];
-    [doIOHelper WriteAllBytes:filePath :imageData];
     
-    [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
-    doInvokeResult *_invokeResult = [[doInvokeResult alloc]init];
-    [_invokeResult SetResultArray:urlArr];
-    [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+    if ([controller.asset isKindOfClass:[PHAsset class]]) {
+        PHAsset *originalAsset = (PHAsset*)controller.asset;
+        // get extra info
+        PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
+        //        options.networkAccessAllowed = YES; //download asset metadata from iCloud if needed, not supported now
+//        __weak typeof(self) weakSelf = self;
+        [originalAsset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput * _Nullable contentEditingInput, NSDictionary * _Nonnull info) {
+            CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+            NSMutableDictionary *TIFFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyTIFFDictionary];
+            NSMutableDictionary *EXIFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyExifDictionary];
+            NSMutableDictionary *metadataAsMutable = [NSMutableDictionary dictionary];
+            if (EXIFDICTIONARY){
+                if ([EXIFDICTIONARY objectForKey:@"PixelXDimension"]) {
+                    EXIFDICTIONARY[@"PixelXDimension"] = [NSNumber numberWithFloat:imageSize.width];
+                }
+                if ([EXIFDICTIONARY objectForKey:@"PixelYDimension"]) {
+                    EXIFDICTIONARY[@"PixelYDimension"] = [NSNumber numberWithFloat:imageSize.height];
+
+                }
+                [metadataAsMutable setObject:EXIFDICTIONARY forKey:(NSString *)kCGImagePropertyExifDictionary];
+            }
+            if (TIFFDICTIONARY)[metadataAsMutable setObject:TIFFDICTIONARY forKey:(NSString *)kCGImagePropertyTIFFDictionary];
+            
+//            id width = [NSString stringWithFormat:@"%@",[self checkEmpty:[exif objectForKey:@"PixelXDimension"]]];
+//            id height = [NSString stringWithFormat:@"%@",[self checkEmpty:[exif objectForKey:@"PixelYDimension"]]];
+            CGImageSourceRef imageSource = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
+            
+            CFStringRef UTI = CGImageSourceGetType(imageSource); //this is the type of image (e.g., public.jpeg)
+            
+            //this will be the data CGImageDestinationRef will write into
+            NSMutableData *dest_data = [NSMutableData data];
+            
+            CGImageDestinationRef destination = CGImageDestinationCreateWithData((CFMutableDataRef)dest_data,UTI,1,NULL);
+            
+            if(!destination) {
+                NSLog(@"***Could not create image destination ***");
+            }
+            
+            //add the image contained in the image source to the destination, overidding the old metadata with our modified metadata
+            CGImageDestinationAddImageFromSource(destination,imageSource,0, (CFDictionaryRef) metadataAsMutable);
+            //tell the destination to write the image data and metadata into our data object.
+            //It will return false if something goes wrong
+            BOOL success = NO;
+            success = CGImageDestinationFinalize(destination);
+            
+            if(!success) {
+                NSLog(@"***Could not create data from image destination ***");
+            }
+            //            image = [UIImage imageWithData:imageData];
+            
+            if(![doIOHelper ExistDirectory:path])
+            [doIOHelper CreateDirectory:path];
+            [doIOHelper WriteAllBytes:filePath :dest_data];
+            
+            //cleanup
+            CFRelease(destination);
+            CFRelease(imageSource);
+            
+            [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
+            doInvokeResult *_invokeResult = [[doInvokeResult alloc]init];
+            [_invokeResult SetResultArray:urlArr];
+            [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [controller dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
+    }else {
+        if(![doIOHelper ExistDirectory:path])
+        [doIOHelper CreateDirectory:path];
+        [doIOHelper WriteAllBytes:filePath :imageData];
+        [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
+        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init];
+        [_invokeResult SetResultArray:urlArr];
+        [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }
+
 }
+
+- (void)doNothing {
+    NSLog(@"do nothing");
+}
+
 #pragma mark - doAlbumCropViewControllerDelegate方法
 
 -(void)cropViewController:(doAlbumCropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage
 {
     self.tempImage = croppedImage;
-    [self saveImageToLocal];
-    [controller dismissViewControllerAnimated:YES completion:nil];
+    [self saveImageToLocalWithAsset:controller];
+//    [controller dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)cropViewControllerDidCancel:(doAlbumCropViewController *)controller
 {
@@ -203,12 +373,13 @@
 /// User finish picking photo，if assets are not empty, user picking original photo.
 /// 用户选择好了图片，如果assets非空，则用户选择了原图。
 - (void)imagePickerController:(doYZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
     NSString *_fileFullName = [self.myScritEngine CurrentApp].DataFS.RootPath;
     NSMutableArray *urlArr = [[NSMutableArray alloc]init];
     for (int i = 0; i < photos.count ; i ++) {
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[doUIModuleHelper stringWithUUID]];
         NSString *filePath = [NSString stringWithFormat:@"%@/temp/do_Album/%@",_fileFullName,fileName];
-        UIImage *image = [photos objectAtIndex:i];
+        __block UIImage *image = [photos objectAtIndex:i];
         CGSize size = CGSizeMake(_imageWidth, _imageHeight);
         CGFloat hwRatio = image.size.height/image.size.width;
         CGFloat whRatio = image.size.width/image.size.height;
@@ -230,21 +401,150 @@
             self.tempImage = image;
             self.imageSize = size;
             self.imageQuality = _imageQuality;
-            [self openDoYZCropViewController];
-            return ;
+            [self openDoYZCropViewController:assets[i]];
+            return;
         }
-        image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
-        NSData *imageData = UIImageJPEGRepresentation(image, _imageQuality / 100.0);
-        image = [UIImage imageWithData:imageData];
-        NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
-        if(![doIOHelper ExistDirectory:path])
-            [doIOHelper CreateDirectory:path];
-        [doIOHelper WriteAllBytes:filePath :imageData];
+        
+        // get extra info
+        PHAsset *originalAsset = assets[i];
+        PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
+        //        options.networkAccessAllowed = YES; //download asset metadata from iCloud if needed, not supported now
+        __weak typeof(self) weakSelf = self;
+        [originalAsset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput * _Nullable contentEditingInput, NSDictionary * _Nonnull info) {
+            CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+            NSDictionary *TIFFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyTIFFDictionary];
+            NSDictionary *EXIFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyExifDictionary];
+            NSMutableDictionary *metadataAsMutable = [NSMutableDictionary dictionary];
+            if (EXIFDICTIONARY)[metadataAsMutable setObject:EXIFDICTIONARY forKey:(NSString *)kCGImagePropertyExifDictionary];
+            if (TIFFDICTIONARY)[metadataAsMutable setObject:TIFFDICTIONARY forKey:(NSString *)kCGImagePropertyTIFFDictionary];
+            
+            image = [doUIModuleHelper imageWithImageSimple:image scaledToSize:size];
+            NSData *imageData = UIImageJPEGRepresentation(image, _imageQuality / 100.0);
+            
+            CGImageSourceRef imageSource = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
+            
+            CFStringRef UTI = CGImageSourceGetType(imageSource); //this is the type of image (e.g., public.jpeg)
+            
+            //this will be the data CGImageDestinationRef will write into
+            NSMutableData *dest_data = [NSMutableData data];
+            
+            CGImageDestinationRef destination = CGImageDestinationCreateWithData((CFMutableDataRef)dest_data,UTI,1,NULL);
+            
+            if(!destination) {
+                NSLog(@"***Could not create image destination ***");
+            }
+            
+            //add the image contained in the image source to the destination, overidding the old metadata with our modified metadata
+            CGImageDestinationAddImageFromSource(destination,imageSource,0, (CFDictionaryRef) metadataAsMutable);
+            //tell the destination to write the image data and metadata into our data object.
+            //It will return false if something goes wrong
+            BOOL success = NO;
+            success = CGImageDestinationFinalize(destination);
+            
+            if(!success) {
+                NSLog(@"***Could not create data from image destination ***");
+            }
+            //            image = [UIImage imageWithData:imageData];
+            
+            NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",_fileFullName];
+            if(![doIOHelper ExistDirectory:path])
+                [doIOHelper CreateDirectory:path];
+            [doIOHelper WriteAllBytes:filePath :dest_data];
+            
+            //cleanup
+            CFRelease(destination);
+            CFRelease(imageSource);
+            
+            // finish one data write operation
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            weakSelf.countForFireSelectResult += 1;
+            dispatch_semaphore_signal(semaphore);
+        }];
 
         [urlArr addObject:[NSString stringWithFormat:@"data://temp/do_Album/%@",fileName]];
     }
-    doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
-    [_invokeResult SetResultArray:urlArr];
-    [self.myScritEngine Callback:self.myCallbackName :_invokeResult];
+    _selectedPhotoPathsArray = [NSMutableArray arrayWithArray:urlArr];
+    
+    if (_timerToFireSelectResult) {
+        [_timerToFireSelectResult setFireDate:[NSDate distantPast]];
+    }
 }
+
+- (void)imagePickerController:(doYZImagePickerController *)picker didFinishPickingVideo:(UIImage *)coverImage sourceAssets:(id)asset {
+    if ([asset isKindOfClass:[PHAsset class]]) { // iOS 8 以后
+        PHAsset *videoAsset = (PHAsset*)asset;
+       
+        if (videoAsset.mediaType == PHAssetMediaTypeVideo) {
+            NSString *fileRootPath = [self.myScritEngine CurrentApp].DataFS.RootPath;
+            __block NSString *fileName = @"tempAssetVideo.mov";
+            PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+            options.version = PHVideoRequestOptionsVersionOriginal;
+            options.deliveryMode = PHVideoRequestOptionsDeliveryModeMediumQualityFormat;
+            
+            [picker.topViewController.view addSubview:self.interceptTouchView];
+            [self.interceptTouchView addSubview:self.coverView];
+            [self.coverView addSubview:self.indicatorView];
+            [self.coverView addSubview:self.exportLoadingLabel];
+            [self.indicatorView startAnimating];
+            __weak typeof(self) weakSelf = self;
+            [[PHImageManager defaultManager] requestAVAssetForVideo:videoAsset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+                AVURLAsset *urlAsset = (AVURLAsset*)asset;
+                fileName = [urlAsset.URL.absoluteString lastPathComponent];
+                NSString *PATH_MOVIE_FILE = [NSString stringWithFormat:@"%@/temp/do_Album/%@",fileRootPath,fileName];
+                NSString *ExportFilePath = [NSString stringWithFormat:@"data://temp/do_Album/%@",fileName];
+                
+                NSString *path = [NSString stringWithFormat:@"%@/temp/do_Album",fileRootPath];
+                if(![doIOHelper ExistDirectory:path]) {
+                    [doIOHelper CreateDirectory:path];
+                }
+                doInvokeResult *result = [[doInvokeResult alloc] init];
+                if ([[NSFileManager defaultManager] fileExistsAtPath:PATH_MOVIE_FILE]) { // 视频已在本地存在
+//                    [[NSFileManager defaultManager] removeItemAtPath:PATH_MOVIE_FILE error:nil];
+                    [result SetResultArray:[NSMutableArray arrayWithObjects:ExportFilePath, nil]];
+                    [weakSelf.myScritEngine Callback:weakSelf.myCallbackName :result];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [weakSelf.indicatorView stopAnimating];
+                        [weakSelf.indicatorView removeFromSuperview];
+                        [weakSelf.exportLoadingLabel removeFromSuperview];
+                        [weakSelf.coverView removeFromSuperview];
+                        [self.interceptTouchView removeFromSuperview];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:doAblumFinishExprotVideoToLocalNotification object:nil];
+                    });
+                }else {
+                    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetHighestQuality];
+                    exportSession.outputFileType =  AVFileTypeQuickTimeMovie;
+                    exportSession.outputURL = [NSURL fileURLWithPath:PATH_MOVIE_FILE];
+                    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            [weakSelf.indicatorView stopAnimating];
+                            [weakSelf.indicatorView removeFromSuperview];
+                            [weakSelf.exportLoadingLabel removeFromSuperview];
+                            [weakSelf.coverView removeFromSuperview];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:doAblumFinishExprotVideoToLocalNotification object:nil];
+                        });
+                        if (exportSession.error == nil && exportSession.status == AVAssetExportSessionStatusCompleted) {
+                            [result SetResultArray:[NSMutableArray arrayWithObjects:ExportFilePath, nil]];
+                            NSLog(@"success exporting video asset");
+                        }else {
+                            NSLog(@"Error exporting video asset");
+                            [[doServiceContainer Instance].LogEngine WriteError:nil :exportSession.error.description];
+                        }
+                        [weakSelf.myScritEngine Callback:weakSelf.myCallbackName :result];
+                    }];
+                }
+            }];
+        } else{
+            [self.myScritEngine Callback:self.myCallbackName :[[doInvokeResult alloc] init]];
+            NSLog(@"选择的asset 不是视频资源");
+        }
+        
+    }else if ([asset isKindOfClass:[ALAsset class]]){ // iOS 7 不予支持了
+        [self.myScritEngine Callback:self.myCallbackName :[[doInvokeResult alloc] init]];
+        [[doServiceContainer Instance].LogEngine WriteError:nil :@"iOS7及以下版本系统不支持选择视频"];
+        NSLog(@"iOS8以下的系统不支持");
+
+    }
+}
+
+
 @end

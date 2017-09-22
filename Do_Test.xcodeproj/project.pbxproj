@@ -7,25 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755561C07E7CF00F542BA /* do_Album_App.m */; };
-		3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3755591C07E7CF00F542BA /* do_Album_SM.m */; };
-		3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */; };
-		3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756501C0840E300F542BA /* doAlbumCropView.m */; };
-		3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756521C0840E300F542BA /* doAlbumCropViewController.m */; };
-		3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756541C0840E300F542BA /* doAlbumResizeControl.m */; };
-		3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3756561C0840E300F542BA /* UIButton+AGIPC.m */; };
-		3B37569B1C08432E00F542BA /* do_Album_App.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755551C07E7CF00F542BA /* do_Album_App.h */; };
-		3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B3755581C07E7CF00F542BA /* do_Album_SM.h */; };
-		3B5D2CC61C7BF56200BB8868 /* doYZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */; };
-		3B5D2CC71C7BF56200BB8868 /* doYZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */; };
-		3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */; };
-		3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */; };
-		3B5D2CCB1C7BF56200BB8868 /* doYZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */; };
-		3B5D2CCC1C7BF56200BB8868 /* doYZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */; };
-		3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */; };
-		3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */; };
-		3BE411C81C7D5384001D504D /* doYZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE411C71C7D5384001D504D /* doYZAssetCell.xib */; };
-		3BE411CB1C7D6A5E001D504D /* doYZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */; };
 		775CA5451E79449F00608200 /* do_Album.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B37569D1C08437400F542BA /* do_Album.bundle */; };
 		A44BC6701AEE005E001580AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC66F1AEE005E001580AA /* main.m */; };
 		A44BC6731AEE005E001580AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC6721AEE005E001580AA /* AppDelegate.m */; };
@@ -37,6 +18,25 @@
 		A44BC6A21AEE008D001580AA /* doScriptEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC69C1AEE008D001580AA /* doScriptEngine.m */; };
 		A44BC6A31AEE008D001580AA /* doService.m in Sources */ = {isa = PBXBuildFile; fileRef = A44BC69E1AEE008D001580AA /* doService.m */; };
 		A4A1A01D1AF0F83700D835A5 /* do_Test.json in Resources */ = {isa = PBXBuildFile; fileRef = A4A1A01C1AF0F82B00D835A5 /* do_Test.json */; };
+		BC792A831F70F431003A704F /* do_Album_App.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A7F1F70F431003A704F /* do_Album_App.m */; };
+		BC792A841F70F431003A704F /* do_Album_SM.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A821F70F431003A704F /* do_Album_SM.m */; };
+		BC792A901F70F440003A704F /* doAlbumCropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A871F70F440003A704F /* doAlbumCropRectView.m */; };
+		BC792A911F70F440003A704F /* doAlbumCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A891F70F440003A704F /* doAlbumCropView.m */; };
+		BC792A921F70F440003A704F /* doAlbumCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A8B1F70F440003A704F /* doAlbumCropViewController.m */; };
+		BC792A931F70F440003A704F /* doAlbumResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A8D1F70F440003A704F /* doAlbumResizeControl.m */; };
+		BC792A941F70F440003A704F /* UIButton+AGIPC.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A8F1F70F440003A704F /* UIButton+AGIPC.m */; };
+		BC792ABB1F70F452003A704F /* doYZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A981F70F452003A704F /* doYZAssetCell.m */; };
+		BC792ABC1F70F452003A704F /* doYZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A9B1F70F452003A704F /* doYZAssetModel.m */; };
+		BC792ABD1F70F452003A704F /* doYZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A9D1F70F452003A704F /* doYZImageManager.m */; };
+		BC792ABE1F70F452003A704F /* doYZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792A9F1F70F452003A704F /* doYZImagePickerController.m */; };
+		BC792ABF1F70F452003A704F /* doYZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792AA11F70F452003A704F /* doYZPhotoPickerController.m */; };
+		BC792AC01F70F452003A704F /* doYZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792AA31F70F452003A704F /* doYZPhotoPreviewCell.m */; };
+		BC792AC11F70F452003A704F /* doYZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792AA51F70F452003A704F /* doYZPhotoPreviewController.m */; };
+		BC792AC21F70F452003A704F /* doYZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792AA71F70F452003A704F /* doYZVideoPlayerController.m */; };
+		BC792AC31F70F452003A704F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = BC792ABA1F70F452003A704F /* UIView+Layout.m */; };
+		BC792AC41F70F477003A704F /* do_Album_App.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC792A7E1F70F431003A704F /* do_Album_App.h */; };
+		BC792AC51F70F477003A704F /* do_Album_ISM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC792A801F70F431003A704F /* do_Album_ISM.h */; };
+		BC792AC61F70F477003A704F /* do_Album_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BC792A811F70F431003A704F /* do_Album_SM.h */; };
 		CCEB2AC71B09D92A00949C58 /* doModuleExtManage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEB2AC61B09D92A00949C58 /* doModuleExtManage.m */; };
 		CCEB2B001B09D9C700949C58 /* libDoCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEB2AFF1B09D9C700949C58 /* libDoCore.a */; };
 		CCFAEA921B00B16A00AED8D5 /* doPageViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFAEA911B00B16A00AED8D5 /* doPageViewFactory.m */; };
@@ -73,51 +73,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				BC792AC41F70F477003A704F /* do_Album_App.h in CopyFiles */,
+				BC792AC51F70F477003A704F /* do_Album_ISM.h in CopyFiles */,
+				BC792AC61F70F477003A704F /* do_Album_SM.h in CopyFiles */,
 				775CA5451E79449F00608200 /* do_Album.bundle in CopyFiles */,
-				3B37569B1C08432E00F542BA /* do_Album_App.h in CopyFiles */,
-				3B37569C1C08432E00F542BA /* do_Album_SM.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3B3755551C07E7CF00F542BA /* do_Album_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_App.h; sourceTree = "<group>"; };
-		3B3755561C07E7CF00F542BA /* do_Album_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_App.m; sourceTree = "<group>"; };
-		3B3755571C07E7CF00F542BA /* do_Album_ISM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_ISM.h; sourceTree = "<group>"; };
-		3B3755581C07E7CF00F542BA /* do_Album_SM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_SM.h; sourceTree = "<group>"; };
-		3B3755591C07E7CF00F542BA /* do_Album_SM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_SM.m; sourceTree = "<group>"; };
-		3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropRectView.h; sourceTree = "<group>"; };
-		3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropRectView.m; sourceTree = "<group>"; };
-		3B37564F1C0840E300F542BA /* doAlbumCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropView.h; sourceTree = "<group>"; };
-		3B3756501C0840E300F542BA /* doAlbumCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropView.m; sourceTree = "<group>"; };
-		3B3756511C0840E300F542BA /* doAlbumCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropViewController.h; sourceTree = "<group>"; };
-		3B3756521C0840E300F542BA /* doAlbumCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropViewController.m; sourceTree = "<group>"; };
-		3B3756531C0840E300F542BA /* doAlbumResizeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumResizeControl.h; sourceTree = "<group>"; };
-		3B3756541C0840E300F542BA /* doAlbumResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumResizeControl.m; sourceTree = "<group>"; };
-		3B3756551C0840E300F542BA /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
-		3B3756561C0840E300F542BA /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
 		3B37569D1C08437400F542BA /* do_Album.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = do_Album.bundle; sourceTree = "<group>"; };
-		3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetCell.h; sourceTree = "<group>"; };
-		3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetCell.m; sourceTree = "<group>"; };
-		3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetModel.h; sourceTree = "<group>"; };
-		3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetModel.m; sourceTree = "<group>"; };
-		3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImagePickerController.h; sourceTree = "<group>"; };
-		3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImagePickerController.m; sourceTree = "<group>"; };
-		3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPickerController.h; sourceTree = "<group>"; };
-		3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPickerController.m; sourceTree = "<group>"; };
-		3B5D2CBE1C7BF56200BB8868 /* doYZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewCell.h; sourceTree = "<group>"; };
-		3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewCell.m; sourceTree = "<group>"; };
-		3B5D2CC01C7BF56200BB8868 /* doYZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewController.h; sourceTree = "<group>"; };
-		3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewController.m; sourceTree = "<group>"; };
-		3B5D2CC21C7BF56200BB8868 /* doYZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZVideoPlayerController.h; sourceTree = "<group>"; };
-		3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZVideoPlayerController.m; sourceTree = "<group>"; };
-		3B5D2CC41C7BF56200BB8868 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
-		3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
-		3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAlbumCell.xib; sourceTree = "<group>"; };
-		3BE411C71C7D5384001D504D /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
-		3BE411C91C7D6A5E001D504D /* doYZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImageManager.h; sourceTree = "<group>"; };
-		3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImageManager.m; sourceTree = "<group>"; };
 		A44BC66A1AEE005E001580AA /* Do_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Do_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC66E1AEE005E001580AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44BC66F1AEE005E001580AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -140,6 +106,57 @@
 		A44BC69E1AEE008D001580AA /* doService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doService.m; sourceTree = "<group>"; };
 		A44BC7B21AEE19CC001580AA /* libdoAlbum.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdoAlbum.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A1A01C1AF0F82B00D835A5 /* do_Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = do_Test.json; sourceTree = "<group>"; };
+		BC792A7E1F70F431003A704F /* do_Album_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_App.h; sourceTree = "<group>"; };
+		BC792A7F1F70F431003A704F /* do_Album_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_App.m; sourceTree = "<group>"; };
+		BC792A801F70F431003A704F /* do_Album_ISM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_ISM.h; sourceTree = "<group>"; };
+		BC792A811F70F431003A704F /* do_Album_SM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_Album_SM.h; sourceTree = "<group>"; };
+		BC792A821F70F431003A704F /* do_Album_SM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_Album_SM.m; sourceTree = "<group>"; };
+		BC792A861F70F440003A704F /* doAlbumCropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropRectView.h; sourceTree = "<group>"; };
+		BC792A871F70F440003A704F /* doAlbumCropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropRectView.m; sourceTree = "<group>"; };
+		BC792A881F70F440003A704F /* doAlbumCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropView.h; sourceTree = "<group>"; };
+		BC792A891F70F440003A704F /* doAlbumCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropView.m; sourceTree = "<group>"; };
+		BC792A8A1F70F440003A704F /* doAlbumCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumCropViewController.h; sourceTree = "<group>"; };
+		BC792A8B1F70F440003A704F /* doAlbumCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumCropViewController.m; sourceTree = "<group>"; };
+		BC792A8C1F70F440003A704F /* doAlbumResizeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doAlbumResizeControl.h; sourceTree = "<group>"; };
+		BC792A8D1F70F440003A704F /* doAlbumResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doAlbumResizeControl.m; sourceTree = "<group>"; };
+		BC792A8E1F70F440003A704F /* UIButton+AGIPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AGIPC.h"; sourceTree = "<group>"; };
+		BC792A8F1F70F440003A704F /* UIButton+AGIPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AGIPC.m"; sourceTree = "<group>"; };
+		BC792A961F70F452003A704F /* doYZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAlbumCell.xib; sourceTree = "<group>"; };
+		BC792A971F70F452003A704F /* doYZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetCell.h; sourceTree = "<group>"; };
+		BC792A981F70F452003A704F /* doYZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetCell.m; sourceTree = "<group>"; };
+		BC792A991F70F452003A704F /* doYZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = doYZAssetCell.xib; sourceTree = "<group>"; };
+		BC792A9A1F70F452003A704F /* doYZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZAssetModel.h; sourceTree = "<group>"; };
+		BC792A9B1F70F452003A704F /* doYZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZAssetModel.m; sourceTree = "<group>"; };
+		BC792A9C1F70F452003A704F /* doYZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImageManager.h; sourceTree = "<group>"; };
+		BC792A9D1F70F452003A704F /* doYZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImageManager.m; sourceTree = "<group>"; };
+		BC792A9E1F70F452003A704F /* doYZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZImagePickerController.h; sourceTree = "<group>"; };
+		BC792A9F1F70F452003A704F /* doYZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZImagePickerController.m; sourceTree = "<group>"; };
+		BC792AA01F70F452003A704F /* doYZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPickerController.h; sourceTree = "<group>"; };
+		BC792AA11F70F452003A704F /* doYZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPickerController.m; sourceTree = "<group>"; };
+		BC792AA21F70F452003A704F /* doYZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		BC792AA31F70F452003A704F /* doYZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		BC792AA41F70F452003A704F /* doYZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZPhotoPreviewController.h; sourceTree = "<group>"; };
+		BC792AA51F70F452003A704F /* doYZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZPhotoPreviewController.m; sourceTree = "<group>"; };
+		BC792AA61F70F452003A704F /* doYZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = doYZVideoPlayerController.h; sourceTree = "<group>"; };
+		BC792AA71F70F452003A704F /* doYZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = doYZVideoPlayerController.m; sourceTree = "<group>"; };
+		BC792AA91F70F452003A704F /* MMVideoPreviewPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMVideoPreviewPlay@2x.png"; sourceTree = "<group>"; };
+		BC792AAA1F70F452003A704F /* MMVideoPreviewPlayHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMVideoPreviewPlayHL@2x.png"; sourceTree = "<group>"; };
+		BC792AAB1F70F452003A704F /* navi_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navi_back@2x.png"; sourceTree = "<group>"; };
+		BC792AAC1F70F452003A704F /* photo_def_photoPickerVc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_def_photoPickerVc@2x.png"; sourceTree = "<group>"; };
+		BC792AAD1F70F452003A704F /* photo_def_previewVc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_def_previewVc@2x.png"; sourceTree = "<group>"; };
+		BC792AAE1F70F452003A704F /* photo_number_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_number_icon@2x.png"; sourceTree = "<group>"; };
+		BC792AAF1F70F452003A704F /* photo_original_def@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_original_def@2x.png"; sourceTree = "<group>"; };
+		BC792AB01F70F452003A704F /* photo_original_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_original_sel@2x.png"; sourceTree = "<group>"; };
+		BC792AB11F70F452003A704F /* photo_sel_photoPickerVc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_sel_photoPickerVc@2x.png"; sourceTree = "<group>"; };
+		BC792AB21F70F452003A704F /* photo_sel_previewVc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_sel_previewVc@2x.png"; sourceTree = "<group>"; };
+		BC792AB31F70F452003A704F /* preview_number_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_number_icon@2x.png"; sourceTree = "<group>"; };
+		BC792AB41F70F452003A704F /* preview_original_def@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_original_def@2x.png"; sourceTree = "<group>"; };
+		BC792AB51F70F452003A704F /* TableViewArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TableViewArrow@2x.png"; sourceTree = "<group>"; };
+		BC792AB61F70F452003A704F /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
+		BC792AB71F70F452003A704F /* TZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAssetCell.xib; sourceTree = "<group>"; };
+		BC792AB81F70F452003A704F /* VideoSendIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VideoSendIcon@2x.png"; sourceTree = "<group>"; };
+		BC792AB91F70F452003A704F /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		BC792ABA1F70F452003A704F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		CC1195AB1B147F7C00583148 /* doAssetLaunchImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = doAssetLaunchImage.h; path = Header/doAssetLaunchImage.h; sourceTree = "<group>"; };
 		CC1195AC1B147F7C00583148 /* doCallBackTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = doCallBackTask.h; path = Header/doCallBackTask.h; sourceTree = "<group>"; };
 		CC1195AD1B147F7C00583148 /* doDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = doDefines.h; path = Header/doDefines.h; sourceTree = "<group>"; };
@@ -268,50 +285,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B3756341C0840E300F542BA /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				3B37564D1C0840E300F542BA /* doAlbumCropRectView.h */,
-				3B37564E1C0840E300F542BA /* doAlbumCropRectView.m */,
-				3B37564F1C0840E300F542BA /* doAlbumCropView.h */,
-				3B3756501C0840E300F542BA /* doAlbumCropView.m */,
-				3B3756511C0840E300F542BA /* doAlbumCropViewController.h */,
-				3B3756521C0840E300F542BA /* doAlbumCropViewController.m */,
-				3B3756531C0840E300F542BA /* doAlbumResizeControl.h */,
-				3B3756541C0840E300F542BA /* doAlbumResizeControl.m */,
-				3B3756551C0840E300F542BA /* UIButton+AGIPC.h */,
-				3B3756561C0840E300F542BA /* UIButton+AGIPC.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		3B5747091C7BF28700B28263 /* AlbumController */ = {
-			isa = PBXGroup;
-			children = (
-				3BE411C91C7D6A5E001D504D /* doYZImageManager.h */,
-				3BE411CA1C7D6A5E001D504D /* doYZImageManager.m */,
-				3BE411C71C7D5384001D504D /* doYZAssetCell.xib */,
-				3BE411B81C7D4174001D504D /* doYZAlbumCell.xib */,
-				3B5D2CB41C7BF56200BB8868 /* doYZAssetCell.h */,
-				3B5D2CB51C7BF56200BB8868 /* doYZAssetCell.m */,
-				3B5D2CB61C7BF56200BB8868 /* doYZAssetModel.h */,
-				3B5D2CB71C7BF56200BB8868 /* doYZAssetModel.m */,
-				3B5D2CBA1C7BF56200BB8868 /* doYZImagePickerController.h */,
-				3B5D2CBB1C7BF56200BB8868 /* doYZImagePickerController.m */,
-				3B5D2CBC1C7BF56200BB8868 /* doYZPhotoPickerController.h */,
-				3B5D2CBD1C7BF56200BB8868 /* doYZPhotoPickerController.m */,
-				3B5D2CBE1C7BF56200BB8868 /* doYZPhotoPreviewCell.h */,
-				3B5D2CBF1C7BF56200BB8868 /* doYZPhotoPreviewCell.m */,
-				3B5D2CC01C7BF56200BB8868 /* doYZPhotoPreviewController.h */,
-				3B5D2CC11C7BF56200BB8868 /* doYZPhotoPreviewController.m */,
-				3B5D2CC21C7BF56200BB8868 /* doYZVideoPlayerController.h */,
-				3B5D2CC31C7BF56200BB8868 /* doYZVideoPlayerController.m */,
-				3B5D2CC41C7BF56200BB8868 /* UIView+Layout.h */,
-				3B5D2CC51C7BF56200BB8868 /* UIView+Layout.m */,
-			);
-			path = AlbumController;
-			sourceTree = "<group>";
-		};
 		A44BC6611AEE005E001580AA = {
 			isa = PBXGroup;
 			children = (
@@ -448,17 +421,85 @@
 		A44BC7B31AEE19CD001580AA /* doExtLib */ = {
 			isa = PBXGroup;
 			children = (
-				3B5747091C7BF28700B28263 /* AlbumController */,
-				3B3756341C0840E300F542BA /* Classes */,
-				3B3755551C07E7CF00F542BA /* do_Album_App.h */,
-				3B3755561C07E7CF00F542BA /* do_Album_App.m */,
-				3B3755571C07E7CF00F542BA /* do_Album_ISM.h */,
-				3B3755581C07E7CF00F542BA /* do_Album_SM.h */,
-				3B3755591C07E7CF00F542BA /* do_Album_SM.m */,
+				BC792A951F70F452003A704F /* AlbumController */,
+				BC792A851F70F440003A704F /* Classes */,
+				BC792A7E1F70F431003A704F /* do_Album_App.h */,
+				BC792A7F1F70F431003A704F /* do_Album_App.m */,
+				BC792A801F70F431003A704F /* do_Album_ISM.h */,
+				BC792A811F70F431003A704F /* do_Album_SM.h */,
+				BC792A821F70F431003A704F /* do_Album_SM.m */,
 				A4A1A01C1AF0F82B00D835A5 /* do_Test.json */,
 				3B37569D1C08437400F542BA /* do_Album.bundle */,
 			);
 			path = doExtLib;
+			sourceTree = "<group>";
+		};
+		BC792A851F70F440003A704F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BC792A861F70F440003A704F /* doAlbumCropRectView.h */,
+				BC792A871F70F440003A704F /* doAlbumCropRectView.m */,
+				BC792A881F70F440003A704F /* doAlbumCropView.h */,
+				BC792A891F70F440003A704F /* doAlbumCropView.m */,
+				BC792A8A1F70F440003A704F /* doAlbumCropViewController.h */,
+				BC792A8B1F70F440003A704F /* doAlbumCropViewController.m */,
+				BC792A8C1F70F440003A704F /* doAlbumResizeControl.h */,
+				BC792A8D1F70F440003A704F /* doAlbumResizeControl.m */,
+				BC792A8E1F70F440003A704F /* UIButton+AGIPC.h */,
+				BC792A8F1F70F440003A704F /* UIButton+AGIPC.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BC792A951F70F452003A704F /* AlbumController */ = {
+			isa = PBXGroup;
+			children = (
+				BC792A961F70F452003A704F /* doYZAlbumCell.xib */,
+				BC792A971F70F452003A704F /* doYZAssetCell.h */,
+				BC792A981F70F452003A704F /* doYZAssetCell.m */,
+				BC792A991F70F452003A704F /* doYZAssetCell.xib */,
+				BC792A9A1F70F452003A704F /* doYZAssetModel.h */,
+				BC792A9B1F70F452003A704F /* doYZAssetModel.m */,
+				BC792A9C1F70F452003A704F /* doYZImageManager.h */,
+				BC792A9D1F70F452003A704F /* doYZImageManager.m */,
+				BC792A9E1F70F452003A704F /* doYZImagePickerController.h */,
+				BC792A9F1F70F452003A704F /* doYZImagePickerController.m */,
+				BC792AA01F70F452003A704F /* doYZPhotoPickerController.h */,
+				BC792AA11F70F452003A704F /* doYZPhotoPickerController.m */,
+				BC792AA21F70F452003A704F /* doYZPhotoPreviewCell.h */,
+				BC792AA31F70F452003A704F /* doYZPhotoPreviewCell.m */,
+				BC792AA41F70F452003A704F /* doYZPhotoPreviewController.h */,
+				BC792AA51F70F452003A704F /* doYZPhotoPreviewController.m */,
+				BC792AA61F70F452003A704F /* doYZVideoPlayerController.h */,
+				BC792AA71F70F452003A704F /* doYZVideoPlayerController.m */,
+				BC792AA81F70F452003A704F /* Resource */,
+				BC792AB91F70F452003A704F /* UIView+Layout.h */,
+				BC792ABA1F70F452003A704F /* UIView+Layout.m */,
+			);
+			path = AlbumController;
+			sourceTree = "<group>";
+		};
+		BC792AA81F70F452003A704F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BC792AA91F70F452003A704F /* MMVideoPreviewPlay@2x.png */,
+				BC792AAA1F70F452003A704F /* MMVideoPreviewPlayHL@2x.png */,
+				BC792AAB1F70F452003A704F /* navi_back@2x.png */,
+				BC792AAC1F70F452003A704F /* photo_def_photoPickerVc@2x.png */,
+				BC792AAD1F70F452003A704F /* photo_def_previewVc@2x.png */,
+				BC792AAE1F70F452003A704F /* photo_number_icon@2x.png */,
+				BC792AAF1F70F452003A704F /* photo_original_def@2x.png */,
+				BC792AB01F70F452003A704F /* photo_original_sel@2x.png */,
+				BC792AB11F70F452003A704F /* photo_sel_photoPickerVc@2x.png */,
+				BC792AB21F70F452003A704F /* photo_sel_previewVc@2x.png */,
+				BC792AB31F70F452003A704F /* preview_number_icon@2x.png */,
+				BC792AB41F70F452003A704F /* preview_original_def@2x.png */,
+				BC792AB51F70F452003A704F /* TableViewArrow@2x.png */,
+				BC792AB61F70F452003A704F /* TZAlbumCell.xib */,
+				BC792AB71F70F452003A704F /* TZAssetCell.xib */,
+				BC792AB81F70F452003A704F /* VideoSendIcon@2x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		CCEB2AC81B09D9C700949C58 /* Header */ = {
@@ -576,7 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A1A01D1AF0F83700D835A5 /* do_Test.json in Resources */,
-				3BE411C81C7D5384001D504D /* doYZAssetCell.xib in Resources */,
 				A44BC67B1AEE005E001580AA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,22 +647,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3756651C0840E300F542BA /* doAlbumResizeControl.m in Sources */,
-				3B37555B1C07E7CF00F542BA /* do_Album_SM.m in Sources */,
-				3B5D2CCA1C7BF56200BB8868 /* doYZPhotoPickerController.m in Sources */,
-				3BE411CB1C7D6A5E001D504D /* doYZImageManager.m in Sources */,
-				3B5D2CCD1C7BF56200BB8868 /* doYZVideoPlayerController.m in Sources */,
-				3B3756621C0840E300F542BA /* doAlbumCropRectView.m in Sources */,
-				3B5D2CC91C7BF56200BB8868 /* doYZImagePickerController.m in Sources */,
-				3B5D2CCC1C7BF56200BB8868 /* doYZPhotoPreviewController.m in Sources */,
-				3B37555A1C07E7CF00F542BA /* do_Album_App.m in Sources */,
-				3B5D2CCB1C7BF56200BB8868 /* doYZPhotoPreviewCell.m in Sources */,
-				3B3756661C0840E300F542BA /* UIButton+AGIPC.m in Sources */,
-				3B5D2CCE1C7BF56200BB8868 /* UIView+Layout.m in Sources */,
-				3B5D2CC61C7BF56200BB8868 /* doYZAssetCell.m in Sources */,
-				3B5D2CC71C7BF56200BB8868 /* doYZAssetModel.m in Sources */,
-				3B3756631C0840E300F542BA /* doAlbumCropView.m in Sources */,
-				3B3756641C0840E300F542BA /* doAlbumCropViewController.m in Sources */,
+				BC792ABF1F70F452003A704F /* doYZPhotoPickerController.m in Sources */,
+				BC792AC11F70F452003A704F /* doYZPhotoPreviewController.m in Sources */,
+				BC792ABB1F70F452003A704F /* doYZAssetCell.m in Sources */,
+				BC792A931F70F440003A704F /* doAlbumResizeControl.m in Sources */,
+				BC792ABC1F70F452003A704F /* doYZAssetModel.m in Sources */,
+				BC792A841F70F431003A704F /* do_Album_SM.m in Sources */,
+				BC792A831F70F431003A704F /* do_Album_App.m in Sources */,
+				BC792ABD1F70F452003A704F /* doYZImageManager.m in Sources */,
+				BC792A921F70F440003A704F /* doAlbumCropViewController.m in Sources */,
+				BC792ABE1F70F452003A704F /* doYZImagePickerController.m in Sources */,
+				BC792AC01F70F452003A704F /* doYZPhotoPreviewCell.m in Sources */,
+				BC792A901F70F440003A704F /* doAlbumCropRectView.m in Sources */,
+				BC792AC31F70F452003A704F /* UIView+Layout.m in Sources */,
+				BC792A941F70F440003A704F /* UIButton+AGIPC.m in Sources */,
+				BC792A911F70F440003A704F /* doAlbumCropView.m in Sources */,
+				BC792AC21F70F452003A704F /* doYZVideoPlayerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

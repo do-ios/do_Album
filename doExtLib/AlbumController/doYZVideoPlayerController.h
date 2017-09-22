@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString * const doAblumFinishExprotVideoToLocalNotification = @"doAblumFinishExprotVideoToLocalNotification";
+
 @class doYZAssetModel;
 @interface doYZVideoPlayerController : UIViewController
 

@@ -225,7 +225,8 @@ static NSString *cellID = @"doYZAssetCell";
             if (isDegraded) return;
             if (photo) [photos replaceObjectAtIndex:i withObject:photo];
             if (info) [infoArr replaceObjectAtIndex:i withObject:info];
-            if (_isSelectOriginalPhoto) [assets replaceObjectAtIndex:i withObject:model.asset];
+//            if (_isSelectOriginalPhoto)
+            [assets replaceObjectAtIndex:i withObject:model.asset];
 
             for (id item in photos) { if ([item isKindOfClass:[NSNumber class]]) return; }
             
