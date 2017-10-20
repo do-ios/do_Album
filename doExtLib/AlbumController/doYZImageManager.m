@@ -177,6 +177,63 @@
     }
 }
 
+- (void)getAssetsFromFetchResult:(id)result allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(NSArray<doYZAssetModel *> *))completion albumType:(doYZAlbumType)albumType {
+    NSMutableArray *photoArr = [NSMutableArray array];
+    if ([result isKindOfClass:[PHFetchResult class]]) {
+        PHFetchResult *fetchResult = (PHFetchResult *)result;
+        [fetchResult enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            PHAsset *asset = (PHAsset *)obj;
+            TZAssetModelMediaType type = TZAssetModelMediaTypePhoto;
+            if (asset.mediaType == PHAssetMediaTypeVideo)      type = TZAssetModelMediaTypeVideo;
+            else if (asset.mediaType == PHAssetMediaTypeAudio) type = TZAssetModelMediaTypeAudio;
+            else if (asset.mediaType == PHAssetMediaTypeImage) {
+                if (iOS9_1Later) {
+                    // if (asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) type = TZAssetModelMediaTypeLivePhoto;
+                }
+            }
+            if (!allowPickingVideo && type == TZAssetModelMediaTypeVideo) return;
+            NSString *timeLength = type == TZAssetModelMediaTypeVideo ? [NSString stringWithFormat:@"%0.0f",asset.duration] : @"";
+            timeLength = [self getNewTimeFromDurationSecond:timeLength.integerValue];
+            if (albumType == doYZAlbumAll) {
+                [photoArr addObject:[doYZAssetModel modelWithAsset:asset type:type timeLength:timeLength]];
+            }else if (albumType == doYZAlbumVideo){
+                if (asset.mediaType == PHAssetMediaTypeVideo) {
+                    [photoArr addObject:[doYZAssetModel modelWithAsset:asset type:type timeLength:timeLength]];
+                }
+            }else { // doYZAlbumPhoto
+                if (asset.mediaType == PHAssetMediaTypeImage) {
+                    [photoArr addObject:[doYZAssetModel modelWithAsset:asset type:type timeLength:timeLength]];
+                }
+            }
+        }];
+        if (completion) completion(photoArr);
+    } else if ([result isKindOfClass:[ALAssetsGroup class]]) {
+        ALAssetsGroup *gruop = (ALAssetsGroup *)result;
+        if (!allowPickingVideo) [gruop setAssetsFilter:[ALAssetsFilter allPhotos]];
+        [gruop enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+            if (result == nil) {
+                if (completion) completion(photoArr);
+            }
+            TZAssetModelMediaType type = TZAssetModelMediaTypePhoto;
+            if (!allowPickingVideo){
+                [photoArr addObject:[doYZAssetModel modelWithAsset:result type:type]];
+                return;
+            }
+            /// Allow picking video
+            if ([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {
+                type = TZAssetModelMediaTypeVideo;
+                NSTimeInterval duration = [[result valueForProperty:ALAssetPropertyDuration] integerValue];
+                NSString *timeLength = [NSString stringWithFormat:@"%0.0f",duration];
+                timeLength = [self getNewTimeFromDurationSecond:timeLength.integerValue];
+                [photoArr addObject:[doYZAssetModel modelWithAsset:result type:type timeLength:timeLength]];
+            } else {
+                [photoArr addObject:[doYZAssetModel modelWithAsset:result type:type]];
+            }
+        }];
+    }
+    
+}
+
 ///  Get asset at index 获得下标为index的单个照片
 - (void)getAssetFromFetchResult:(id)result atIndex:(NSInteger)index allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(doYZAssetModel *))completion {
     if ([result isKindOfClass:[PHFetchResult class]]) {
@@ -340,6 +397,12 @@
         UIImage *postImage = [UIImage imageWithCGImage:gruop.posterImage];
         if (completion) completion(postImage);
     }
+}
+
+- (void)getPostImageWithPHAsset:(PHAsset *)asset completion:(void (^)(UIImage *))completion {
+    [[doYZImageManager manager] getPhotoWithAsset:asset photoWidth:80 completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+        if (completion) completion(photo);
+    }];
 }
 
 /// Get Original Photo / 获取原图

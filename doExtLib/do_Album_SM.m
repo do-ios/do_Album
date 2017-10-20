@@ -169,7 +169,7 @@
     NSInteger imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
     NSString *_callbackName = [parms objectAtIndex:2];
     doInvokeResult *_invokeResult = [[doInvokeResult alloc] init:self.UniqueKey];
-    if (_path ==nil || _path.length <=0) {//失败
+    if (_path ==nil || _path.length <=0) { //失败
         [_invokeResult SetResultBoolean:false];
     }
     else
@@ -216,13 +216,28 @@
     _imageHeight = [doJsonHelper GetOneInteger:_dictParas :@"height" :-1];
     _imageQuality = [doJsonHelper GetOneInteger:_dictParas :@"quality" :100];
     _isCut = [doJsonHelper GetOneBoolean:_dictParas :@"iscut" :NO];
+    NSInteger type = [doJsonHelper GetOneInteger:_dictParas :@"type" :0];
+    doYZAlbumType albumType = doYZAlbumAll;
+    switch (type) {
+        case 0:
+            albumType = doYZAlbumAll;
+            break;
+        case 1:
+            albumType = doYZAlbumPhoto;
+            break;
+        case 2:
+            albumType = doYZAlbumVideo;
+            break;
+        default:
+            break;
+    }
     id<doIPage> curPage = [self.myScritEngine CurrentPage];
     
     UIViewController *curVc = (UIViewController *)curPage.PageView;
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        doYZImagePickerController *imagePickerVc = [[doYZImagePickerController alloc] initWithMaxImagesCount:_imageNum delegate:self];
+        doYZImagePickerController *imagePickerVc = [[doYZImagePickerController alloc] initWithMaxImagesCount:_imageNum delegate:self albumType:albumType];
         imagePickerVc.allowPickingOriginalPhoto = NO;
         if ([UIDevice currentDevice].systemVersion.floatValue < 8.0) { // iOS8 一下的不予支持视频选择
             imagePickerVc.allowPickingVideo = NO;
@@ -274,8 +289,8 @@
 //        __weak typeof(self) weakSelf = self;
         [originalAsset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput * _Nullable contentEditingInput, NSDictionary * _Nonnull info) {
             CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
-            NSMutableDictionary *TIFFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyTIFFDictionary];
-            NSMutableDictionary *EXIFDICTIONARY = fullImage.properties[(NSString*)kCGImagePropertyExifDictionary];
+            NSMutableDictionary *TIFFDICTIONARY = [fullImage.properties[(NSString*)kCGImagePropertyTIFFDictionary] mutableCopy];
+            NSMutableDictionary *EXIFDICTIONARY = [fullImage.properties[(NSString*)kCGImagePropertyExifDictionary] mutableCopy];
             NSMutableDictionary *metadataAsMutable = [NSMutableDictionary dictionary];
             if (EXIFDICTIONARY){
                 if ([EXIFDICTIONARY objectForKey:@"PixelXDimension"]) {

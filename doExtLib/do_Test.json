@@ -125,6 +125,14 @@
           "Required": 0,
           "DefaultValue": "false",
           "Description": "只有在maxCount设置为1时该参数设置成true才有效；如果这个值为true的话，照片选择结束后会出现一个中间的取景界面，有一个矩形框让用户对照片进行裁剪"
+        },
+        {
+          "ID": "type",
+          "Name": "选择模式",
+          "Type": "Number",
+          "Required": 0,
+          "DefaultValue": "0",
+          "Description": "相册组件选择模式:0->相册视频;1->仅相册;2->仅视频"
         }
       ]
     }

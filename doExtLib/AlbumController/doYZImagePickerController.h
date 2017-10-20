@@ -13,11 +13,17 @@
 #define iOS9Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.0f)
 #define iOS9_1Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.1f)
 
+typedef NS_OPTIONS(NSUInteger, doYZAlbumType) {
+    doYZAlbumPhoto  = 1 << 0,
+    doYZAlbumVideo  = 1 << 1,
+    doYZAlbumAll    = doYZAlbumPhoto | doYZAlbumVideo,
+};
+
 @protocol TZImagePickerControllerDelegate;
 @interface doYZImagePickerController : UINavigationController
 
 /// Use this init method / 用这个初始化方法
-- (instancetype)initWithMaxImagesCount:(NSInteger)maxImagesCount delegate:(id<TZImagePickerControllerDelegate>)delegate;
+- (instancetype)initWithMaxImagesCount:(NSInteger)maxImagesCount delegate:(id<TZImagePickerControllerDelegate>)delegate albumType:(doYZAlbumType)albumType;
 
 /// Default is 9 / 默认最大可选9张图片
 @property (nonatomic, assign) NSInteger maxImagesCount;
@@ -74,5 +80,5 @@
 
 
 @interface doYZAlbumPickerController : UIViewController
-
+@property (nonatomic, assign) doYZAlbumType albumType;
 @end

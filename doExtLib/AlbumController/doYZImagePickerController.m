@@ -24,6 +24,9 @@
     UIActivityIndicatorView *_HUDIndicatorView;
     UILabel *_HUDLable;
 }
+
+@property (nonatomic, assign) doYZAlbumType albumType;
+
 @end
 
 @implementation doYZImagePickerController
@@ -59,8 +62,10 @@
     [barItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
 }
 
-- (instancetype)initWithMaxImagesCount:(NSInteger)maxImagesCount delegate:(id<TZImagePickerControllerDelegate>)delegate {
+- (instancetype)initWithMaxImagesCount:(NSInteger)maxImagesCount delegate:(id<TZImagePickerControllerDelegate>)delegate albumType:(doYZAlbumType)albumType {
+    _albumType = albumType;
     doYZAlbumPickerController *albumPickerVc = [[doYZAlbumPickerController alloc] init];
+    albumPickerVc.albumType = albumType;
     self = [super initWithRootViewController:albumPickerVc];
     if (self) {
         self.maxImagesCount = maxImagesCount > 0 ? maxImagesCount : 9; // Default is 9 / 默认最大可选9张图片
@@ -81,12 +86,13 @@
             if (!appName) appName = [[NSBundle mainBundle].infoDictionary valueForKey:@"CFBundleName"];
             _tipLable.text = [NSString stringWithFormat:@"请在%@的\"设置-隐私-照片\"选项中，\r允许%@访问你的手机相册。",[UIDevice currentDevice].model,appName];
             [self.view addSubview:_tipLable];
-            _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:YES];
+            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:YES];
         } else {
             [self pushToPhotoPickerVc];
         }
     }
     return self;
+    
 }
 
 - (void)observeAuthrizationStatusChange {
@@ -104,6 +110,7 @@
     _pushToPhotoPickerVc = YES;
     if (_pushToPhotoPickerVc) {
         doYZPhotoPickerController *photoPickerVc = [[doYZPhotoPickerController alloc] init];
+        photoPickerVc.albumType = _albumType;
         [[doYZImageManager manager] getCameraRollAlbum:self.allowPickingVideo completion:^(doYZAlbumModel *model) {
             photoPickerVc.model = model;
             [self pushViewController:photoPickerVc animated:YES];
@@ -186,6 +193,7 @@
 }
 
 @end
+
 static NSString *CellIdentifier = @"doYZAlbumCell";
 @implementation doYZAlbumPickerController
 
@@ -195,10 +203,7 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
     self.navigationItem.title = @"照片";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     [self configTableView];
-    
     [self setupDeviceOrientatinChangeNofitify];
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -210,8 +215,26 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
 - (void)configTableView {
     doYZImagePickerController *imagePickerVc = (doYZImagePickerController *)self.navigationController;
     [[doYZImageManager manager] getAllAlbums:imagePickerVc.allowPickingVideo completion:^(NSArray<doYZAlbumModel *> *models) {
-        _albumArr = [NSMutableArray arrayWithArray:models];
-        
+        _albumArr = [NSMutableArray array];
+        for (doYZAlbumModel *albumModel in models) {
+            if ([albumModel.result isKindOfClass:[PHFetchResult class]]) { // iOS 8 以后
+                PHFetchResult *fetchResult = (PHFetchResult*)albumModel.result;
+                doYZAlbumType type = [self getPHFetchResultTypeOf:fetchResult];
+                albumModel.typeOfContainPHAsset = type;
+                if (_albumType == doYZAlbumAll) { // 用户设置当前可混合选择
+                    [_albumArr addObject:albumModel];
+                }else if (_albumType == doYZAlbumVideo){ // 用户设置当前只能选择视频
+                    if (type == doYZAlbumVideo) { // 仅包含video的PHFetchResult
+                        [_albumArr addObject:albumModel];
+                    }
+                    
+                }else { // 用户设置当前只能选择相片
+                    if (type == doYZAlbumPhoto) { // 仅包含video的PHFetchResult
+                        [_albumArr addObject:albumModel];
+                    }
+                }
+            }
+        }
         CGFloat top = 44;
         if (iOS7Later) top += 20;
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, top, self.view.tz_width, self.view.tz_height - top) style:UITableViewStylePlain];
@@ -229,6 +252,17 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
         }
         [self.view addSubview:_tableView];
     }];
+}
+
+- (doYZAlbumType)getPHFetchResultTypeOf:(PHFetchResult*)fetchResult {
+    NSInteger videoPHAssetCount = [fetchResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+    NSInteger imagePHAssetCount = [fetchResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+    if (videoPHAssetCount != 0 && imagePHAssetCount == 0) { // 纯video PHFetchResult
+        return doYZAlbumVideo;
+    }else if (imagePHAssetCount != 0 && videoPHAssetCount == 0) { // 纯image PHFetchResult
+        return doYZAlbumPhoto;
+    }
+    return doYZAlbumAll; // 混合
 }
 
 #pragma mark - Click Event
@@ -253,12 +287,14 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     doYZAlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.albumType = _albumType;
     cell.model = _albumArr[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     doYZPhotoPickerController *photoPickerVc = [[doYZPhotoPickerController alloc] init];
+    photoPickerVc.albumType = _albumType;
     photoPickerVc.model = _albumArr[indexPath.row];
     [self.navigationController pushViewController:photoPickerVc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

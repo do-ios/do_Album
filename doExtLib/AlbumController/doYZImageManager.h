@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
-
+#import "doYZImagePickerController.h"
 @class doYZAlbumModel,doYZAssetModel;
 @interface doYZImageManager : NSObject
 
@@ -27,11 +27,16 @@
 
 /// Get Assets 获得Asset数组
 - (void)getAssetsFromFetchResult:(id)result allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(NSArray<doYZAssetModel *> *models))completion;
+- (void)getAssetsFromFetchResult:(id)result allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(NSArray<doYZAssetModel *> *models))completion albumType:(doYZAlbumType)albumType;
+
 - (void)getAssetFromFetchResult:(id)result atIndex:(NSInteger)index allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(doYZAssetModel *model))completion;
 
 /// Get photo 获得照片
 - (void)getPostImageWithAlbumModel:(doYZAlbumModel *)model completion:(void (^)(UIImage *postImage))completion;
+- (void)getPostImageWithPHAsset:(PHAsset*)asset completion:(void (^)(UIImage *postImage))completion;
+
 - (void)getPhotoWithAsset:(id)asset completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion;
+
 - (void)getPhotoWithAsset:(id)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion;
 - (void)getOriginalPhotoWithAsset:(id)asset completion:(void (^)(UIImage *photo,NSDictionary *info))completion;
 

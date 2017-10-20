@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import "doYZImagePickerController.h"
 typedef enum : NSUInteger {
     TZAssetModelMediaTypePhoto = 0,
     TZAssetModelMediaTypeLivePhoto,
@@ -38,5 +38,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *name;        ///< The album name
 @property (nonatomic, assign) NSInteger count;       ///< Count of photos the album contain
 @property (nonatomic, strong) id result;             ///< PHFetchResult<PHAsset> or ALAssetsGroup<ALAsset>
+@property (nonatomic, assign) doYZAlbumType typeOfContainPHAsset;   // PHFetchResult 当前包含PHAsset的类型
 
 @end

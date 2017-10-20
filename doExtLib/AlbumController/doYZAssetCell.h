@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "doYZImagePickerController.h"
 typedef enum : NSUInteger {
     TZAssetCellTypePhoto = 0,
     TZAssetCellTypeLivePhoto,
@@ -31,5 +31,5 @@ typedef enum : NSUInteger {
 @interface doYZAlbumCell : UITableViewCell
 
 @property (nonatomic, strong) doYZAlbumModel *model;
-
+@property (nonatomic, assign) doYZAlbumType albumType;
 @end

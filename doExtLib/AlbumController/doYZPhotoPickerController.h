@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "doYZImagePickerController.h"
 @class doYZAlbumModel;
 @interface doYZPhotoPickerController : UIViewController
 
 @property (nonatomic, strong) doYZAlbumModel *model;
-
+@property (nonatomic, assign) doYZAlbumType albumType;
 @end

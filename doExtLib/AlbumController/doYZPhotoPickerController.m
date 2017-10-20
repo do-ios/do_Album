@@ -50,11 +50,16 @@ static NSString *cellID = @"doYZAssetCell";
     self.navigationItem.title = _model.name;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     doYZImagePickerController *imagePickerVc = (doYZImagePickerController *)self.navigationController;
+//    [[doYZImageManager manager] getAssetsFromFetchResult:_model.result allowPickingVideo:imagePickerVc.allowPickingVideo completion:^(NSArray<doYZAssetModel *> *models) {
+//        _photoArr = [NSMutableArray arrayWithArray:models];
+//        [self configCollectionView];
+//        [self configBottomToolBar];
+//    }];
     [[doYZImageManager manager] getAssetsFromFetchResult:_model.result allowPickingVideo:imagePickerVc.allowPickingVideo completion:^(NSArray<doYZAssetModel *> *models) {
         _photoArr = [NSMutableArray arrayWithArray:models];
         [self configCollectionView];
         [self configBottomToolBar];
-    }];
+    } albumType:_albumType];
     [self resetCachedAssets];
     [self setupDeviceOrientatinChangeNofitify];
 }

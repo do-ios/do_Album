@@ -92,9 +92,43 @@
     NSAttributedString *countString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%zd)",model.count] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     [nameString appendAttributedString:countString];
     self.titleLable.attributedText = nameString;
-    [[doYZImageManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
-        self.posterImageView.image = postImage;
-    }];
+    if (iOS8Later) {
+        PHAsset *asset;
+        switch (_albumType) {
+            case doYZAlbumAll: {
+                asset = [model.result lastObject];
+                break;
+            }
+            case doYZAlbumVideo: { // 用户设置当前仅选择视频
+                if (model.typeOfContainPHAsset == doYZAlbumVideo) { // 当前model.phfetchResult 仅包含视频
+                    asset = [model.result lastObject];
+                }else if (model.typeOfContainPHAsset == doYZAlbumAll){ // 当前model.phfetchResult 即包含视频也包含相片
+                    // 找到最后一个视频的PHAsset
+                    asset = [self getLastVideoPHAssetOfPHFetchResult:model.result];
+                }
+                break;
+            }
+            case doYZAlbumPhoto: {
+                if (model.typeOfContainPHAsset == doYZAlbumPhoto) { // 当前model.phfetchResult 仅包含图片
+                    asset = [model.result lastObject];
+                }else if (model.typeOfContainPHAsset == doYZAlbumAll){ // 当前model.phfetchResult 即包含视频也包含相片
+                    // 找到最后一个图片的PHAsset
+                    asset = [self getLastPhotoPHAssetOfPHFetchResult:model.result];
+                }
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+        [[doYZImageManager manager] getPostImageWithPHAsset:asset completion:^(UIImage *postImage) {
+            self.posterImageView.image = postImage;
+        }];
+    }else {
+        [[doYZImageManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
+            self.posterImageView.image = postImage;
+        }];
+    }
 }
 
 /// For fitting iOS6
@@ -106,5 +140,35 @@
     if (iOS7Later) [super layoutSublayersOfLayer:layer];
 }
 
+- (PHAsset*)getLastVideoPHAssetOfPHFetchResult:(PHFetchResult*)fetchResult {
+    PHAsset *asset;
+    NSInteger maxVideoAssetIndex = 0;
+    for (PHAsset *asset in fetchResult) {
+        NSInteger tempIndex;
+        if (asset.mediaType == PHAssetMediaTypeVideo) {
+           tempIndex = [fetchResult indexOfObject:asset];
+            if (tempIndex > maxVideoAssetIndex) {
+                maxVideoAssetIndex = tempIndex;
+            }
+        }
+    }
+    asset = [fetchResult objectAtIndex:maxVideoAssetIndex];
+    return asset;
+}
+- (PHAsset*)getLastPhotoPHAssetOfPHFetchResult:(PHFetchResult*)fetchResult {
+    PHAsset *asset;
+    NSInteger maxImageAssetIndex = 0;
+    for (PHAsset *asset in fetchResult) {
+        NSInteger tempIndex;
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            tempIndex = [fetchResult indexOfObject:asset];
+            if (tempIndex > maxImageAssetIndex) {
+                maxImageAssetIndex = tempIndex;
+            }
+        }
+    }
+    asset = [fetchResult objectAtIndex:maxImageAssetIndex];
+    return asset;
+}
 
 @end
