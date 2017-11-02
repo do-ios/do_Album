@@ -132,7 +132,7 @@
           "Type": "Number",
           "Required": 0,
           "DefaultValue": "0",
-          "Description": "相册组件选择模式:0->相册视频;1->仅相册;2->仅视频"
+                "Description": "type 描述改为：相册组件选择模式:0-仅图片；1-仅视频；2-图片与视频"
         }
       ]
     }

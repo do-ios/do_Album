@@ -220,13 +220,13 @@
     doYZAlbumType albumType = doYZAlbumAll;
     switch (type) {
         case 0:
-            albumType = doYZAlbumAll;
-            break;
-        case 1:
             albumType = doYZAlbumPhoto;
             break;
-        case 2:
+        case 1:
             albumType = doYZAlbumVideo;
+            break;
+        case 2:
+            albumType = doYZAlbumAll;
             break;
         default:
             break;
