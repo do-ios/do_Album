@@ -89,31 +89,38 @@
     _model = model;
     
     NSMutableAttributedString *nameString = [[NSMutableAttributedString alloc] initWithString:model.name attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSAttributedString *countString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%zd)",model.count] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
-    [nameString appendAttributedString:countString];
-    self.titleLable.attributedText = nameString;
+    
+    NSInteger count = 0;
+    
     if (iOS8Later) {
+        NSInteger videoPHAssetCount = [(PHFetchResult*)model.result countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+        NSInteger imagePHAssetCount = [(PHFetchResult*)model.result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
         PHAsset *asset;
         switch (_albumType) {
             case doYZAlbumAll: {
                 asset = [model.result lastObject];
+                count = model.count;
                 break;
             }
             case doYZAlbumVideo: { // 用户设置当前仅选择视频
                 if (model.typeOfContainPHAsset == doYZAlbumVideo) { // 当前model.phfetchResult 仅包含视频
                     asset = [model.result lastObject];
+                    count = model.count;
                 }else if (model.typeOfContainPHAsset == doYZAlbumAll){ // 当前model.phfetchResult 即包含视频也包含相片
                     // 找到最后一个视频的PHAsset
                     asset = [self getLastVideoPHAssetOfPHFetchResult:model.result];
+                    count = videoPHAssetCount;
                 }
                 break;
             }
             case doYZAlbumPhoto: {
                 if (model.typeOfContainPHAsset == doYZAlbumPhoto) { // 当前model.phfetchResult 仅包含图片
                     asset = [model.result lastObject];
+                    count = model.count;
                 }else if (model.typeOfContainPHAsset == doYZAlbumAll){ // 当前model.phfetchResult 即包含视频也包含相片
                     // 找到最后一个图片的PHAsset
                     asset = [self getLastPhotoPHAssetOfPHFetchResult:model.result];
+                    count = imagePHAssetCount;
                 }
                 break;
             }
@@ -128,7 +135,11 @@
         [[doYZImageManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
             self.posterImageView.image = postImage;
         }];
+        count = model.count;
     }
+    NSAttributedString *countString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"  (%zd)",count] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    [nameString appendAttributedString:countString];
+    self.titleLable.attributedText = nameString;
 }
 
 /// For fitting iOS6

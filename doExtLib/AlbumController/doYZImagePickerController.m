@@ -224,12 +224,12 @@ static NSString *CellIdentifier = @"doYZAlbumCell";
                 if (_albumType == doYZAlbumAll) { // 用户设置当前可混合选择
                     [_albumArr addObject:albumModel];
                 }else if (_albumType == doYZAlbumVideo){ // 用户设置当前只能选择视频
-                    if (type == doYZAlbumVideo) { // 仅包含video的PHFetchResult
+                    if (type == doYZAlbumVideo || type == doYZAlbumAll) {
                         [_albumArr addObject:albumModel];
                     }
                     
                 }else { // 用户设置当前只能选择相片
-                    if (type == doYZAlbumPhoto) { // 仅包含video的PHFetchResult
+                    if (type == doYZAlbumPhoto || type == doYZAlbumAll) {
                         [_albumArr addObject:albumModel];
                     }
                 }
